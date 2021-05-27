@@ -1,6 +1,6 @@
 import React from "react";
 const Diary = () => {
-  return <h1>Calculate</h1>;
+  return <h1>Diary</h1>;
 };
 
 export default Diary;

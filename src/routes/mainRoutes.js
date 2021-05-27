@@ -1,8 +1,4 @@
 import { lazy } from "react";
-// import AuthPage from "../pages/AuthPage";
-// import Calculate from "../pages/Calculate";
-// import Diary from "../pages/Diary";
-// import HomePage from "../pages/HomePage";
 
 export const mainRoutes = [
   {
@@ -16,7 +12,7 @@ export const mainRoutes = [
     ),
   },
   {
-    name: "",
+    name: "Калькулятор",
     path: "/calculator",
     private: true,
     restricted: false,
@@ -26,7 +22,7 @@ export const mainRoutes = [
     ),
   },
   {
-    name: "",
+    name: "Дневник",
     path: "/diary",
     private: true,
     restricted: false,
@@ -39,7 +35,7 @@ export const mainRoutes = [
     name: "Вход",
     path: "/login",
     private: false,
-    restricted: false,
+    restricted: true,
     exact: true,
     component: lazy(() =>
       import("../pages/AuthPage" /*webpackChunkName:'Login'*/)
@@ -49,7 +45,7 @@ export const mainRoutes = [
     name: "Регистрация",
     path: "/registration",
     private: false,
-    restricted: false,
+    restricted: true,
     exact: true,
     component: lazy(() =>
       import("../pages/AuthPage" /*webpackChunkName:'Registration'*/)

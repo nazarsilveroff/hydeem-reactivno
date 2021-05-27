@@ -8,7 +8,12 @@ const Main = () => {
       <Suspense fallback={"Loading..."}>
         <Switch>
           {mainRoutes.map((item) => (
-            <Route {...item} key={item.path} />
+            <Route
+              path={item.path}
+              exact={item.exact}
+              component={item.component}
+              key={item.path}
+            />
           ))}
         </Switch>
       </Suspense>
