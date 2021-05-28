@@ -1,6 +1,11 @@
 import React from "react";
-const PublicRoutes = () => {
-  return <h1>PublicRoutes</h1>;
+import { Redirect, Route } from "react-router";
+const PublicRoutes = ({ path, exact, component, isAuth, isRestricted }) => {
+  return isAuth && isRestricted ? (
+    <Redirect to="/diary" />
+  ) : (
+    <Route path={path} exact={exact} component={component} />
+  );
 };
 
 export default PublicRoutes;

@@ -16,7 +16,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import {  userReducers } from "./user/userReducers";
+import { userReducers } from "./user/userReducers";
 
 // const rootReduser = combineReducers({
 //   items: itemsReduser,
@@ -45,7 +45,6 @@ export const store = configureStore({
   reducer: {
     authorization: persistedReducer,
     user: userReducers,
-
   },
   middleware: middleware,
 });

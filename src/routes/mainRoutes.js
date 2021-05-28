@@ -4,8 +4,8 @@ export const mainRoutes = [
   {
     name: "",
     path: "/",
-    private: false,
-    restricted: false,
+    isPrivate: false,
+    isRestricted: false,
     exact: true,
     component: lazy(() =>
       import("../pages/HomePage" /*webpackChunkName:'HomePage'*/)
@@ -14,8 +14,8 @@ export const mainRoutes = [
   {
     name: "Калькулятор",
     path: "/calculator",
-    private: true,
-    restricted: false,
+    isPrivate: true,
+    isRestricted: false,
     exact: true,
     component: lazy(() =>
       import("../pages/Calculate" /*webpackChunkName:'Calculate'*/)
@@ -24,8 +24,8 @@ export const mainRoutes = [
   {
     name: "Дневник",
     path: "/diary",
-    private: true,
-    restricted: false,
+    isPrivate: true,
+    isRestricted: false,
     exact: true,
     component: lazy(() =>
       import("../pages/Diary" /*webpackChunkName:'Diary'*/)
@@ -34,8 +34,8 @@ export const mainRoutes = [
   {
     name: "Вход",
     path: "/login",
-    private: false,
-    restricted: true,
+    isPrivate: false,
+    isRestricted: true,
     exact: true,
     component: lazy(() =>
       import("../pages/AuthPage" /*webpackChunkName:'Login'*/)
@@ -44,8 +44,8 @@ export const mainRoutes = [
   {
     name: "Регистрация",
     path: "/registration",
-    private: false,
-    restricted: true,
+    isPrivate: false,
+    isRestricted: true,
     exact: true,
     component: lazy(() =>
       import("../pages/AuthPage" /*webpackChunkName:'Registration'*/)

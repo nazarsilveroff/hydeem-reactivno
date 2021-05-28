@@ -7,6 +7,7 @@ import {
 } from "../../redux/auth/authOperations";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import schema from "./Validation/validator";
+import { AuthFormContainer } from "./AuthFormStyled";
 const registrationValues = {
   email: "ddd@gmail.com",
   password: "123456",
@@ -19,12 +20,11 @@ const loginValues = {
 const AuthForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log("location", location.pathname);
   return (
-    <div>
-      <div>
-        <h1>
-          {location.pathname === "/registration" ? "Registeration" : "Login"}
+    <AuthFormContainer>
+      <div className="navContainer">
+        <h1 className="authTitle">
+          {location.pathname === "/registration" ? "регистрация" : "вход"}
         </h1>
         <Formik
           initialValues={
@@ -39,78 +39,73 @@ const AuthForm = () => {
               : dispatch(loginOperations(values));
           }}
         >
-          <Form>
+          <Form className="form">
             {location.pathname === "/registration" ? (
               <>
                 <label>
-                  Name:
                   <Field
                     type="text"
                     name="username"
-                    placeholder="Sara"
-                    className=""
+                    placeholder="Имя *"
+                    className="input"
                   />
                   <ErrorMessage name="username" component="div" />
                 </label>
                 <label>
-                  Email:
                   <Field
                     type="email"
                     name="email"
-                    placeholder="sara@gmail.com"
-                    className=""
+                    placeholder="Електронна почта *"
+                    className="input"
                   />
                   <ErrorMessage name="email" component="div" />
                 </label>
                 <label>
-                  Password:
                   <Field
                     type="password"
                     name="password"
-                    placeholder="**********"
-                    className=""
+                    placeholder="Пароль *"
+                    className="input"
                   />
                   <ErrorMessage name="password" component="div" />
                 </label>
-                <button type="submit" className="">
+                <button type="submit" className="button">
                   {location.pathname === "/registration"
-                    ? "Sign up"
-                    : "Sign in"}
+                    ? "Регистрация"
+                    : "Вход"}
                 </button>
               </>
             ) : (
               <>
                 <label>
-                  Email:
                   <Field
                     type="email"
                     name="email"
-                    placeholder="sara@gmail.com"
-                    className=""
+                    placeholder="Електронна почта *"
+                    className="input"
                   />
                   <ErrorMessage name="email" component="div" />
                 </label>
                 <label>
-                  Password:
                   <Field
                     type="password"
                     name="password"
-                    placeholder="**********"
-                    className=""
+                    placeholder="Пароль *"
+                    className="input"
                   />
                   <ErrorMessage name="password" component="div" />
                 </label>
-                <button type="submit" className="">
+                <button type="submit" className="button">
                   {location.pathname === "/registration"
-                    ? "Sign up"
-                    : "Sign in"}
+                    ? "Регистрация"
+                    : "Вход"}
                 </button>
               </>
             )}
           </Form>
         </Formik>
       </div>
-    </div>
+    </AuthFormContainer>
   );
 };
 
