@@ -19,7 +19,6 @@ const loginValues = {
 const AuthForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
-  console.log("location", location.pathname);
   return (
     <div>
       <div>
