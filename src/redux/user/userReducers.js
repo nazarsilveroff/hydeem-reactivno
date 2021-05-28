@@ -1,12 +1,28 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import { loginSuccess, logOut } from "../auth/authActions";
 import { resetError, setError } from "../error/erorAction";
-import { setUserLoading } from "./userActions";
+import { setUserLoading, getUserData } from "./userActions";
+
+export const daysInfoReducer = createReducer([], {
+  [getUserData]: (_, { payload }) => payload.days,
+});
+
+export const userDataReducer = createReducer(
+  {},
+  {
+    [getUserData]: (_, { payload }) => payload.userData,
+  }
+);
 
 export const userReducer = createReducer(
   {},
   {
     [loginSuccess]: (_, { payload }) => ({ ...payload.user }),
+    [getUserData]: (_, { payload }) => ({
+      email: payload.email,
+      username: payload.username,
+      id: payload.id,
+    }),
     [logOut]: () => ({}),
   }
 );
@@ -19,7 +35,9 @@ export const userErorrReducer = createReducer("", {
   [resetError]: () => "",
 });
 export const userReducers = combineReducers({
-  user: userReducer,
+  userInfo: userReducer,
+  userData: userDataReducer,
+  daysInfo: daysInfoReducer,
   loader: userLoaderReducer,
   erorr: userErorrReducer,
 });
