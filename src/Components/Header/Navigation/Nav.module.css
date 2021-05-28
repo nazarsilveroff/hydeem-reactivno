@@ -1,0 +1,31 @@
+
+.navContainer{}
+.linkWrapper{display: flex;}
+.imageLink{
+    background-image: url("../../../img/logo-mob.png");
+          width: 46.67px;
+          height: 44px;
+          background-repeat: no-repeat;
+   
+}
+ @media screen and (min-width: 768px) {
+      .imageLink{
+          background-image: url("../../../img/svg/logoTablet.svg");
+          width: 166.41px;
+            height: 63px;
+          background-repeat: no-repeat;
+      }
+    }
+ @media screen and (min-width: 1280px) {
+      .imageLink{
+          background-image: url("../../../img/svg/logoDesktop.svg");
+          width: 166.41px;
+            height: 63px;
+          background-repeat: no-repeat;
+          /* margin-bottom: 6px; */
+      }
+    }
+
+.logo{}
+.logoSpan{}
+.navList{}
