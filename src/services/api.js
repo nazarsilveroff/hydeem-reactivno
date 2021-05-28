@@ -3,7 +3,6 @@ import { store } from "../redux/store";
 export default class BaseHttpService {
   http;
   constructor() {
-    console.log(store.getState().authorization.tokens.accessToken);
     this.http = axios.create({
       baseURL: "https://slimmom-backend.herokuapp.com",
       headers: {

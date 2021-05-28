@@ -7,11 +7,9 @@ import {
   registerRequest,
   registerSuccess,
 } from "./authActions";
-// const API = process.env.REACT_APP_API_KEY;
 const baseHttp = new BaseHttpService();
 export const registerOperations = (user) => async (dispatch) => {
   dispatch(registerRequest());
-
   try {
     const { data } = await baseHttp.register(user);
     dispatch(registerSuccess(data));
