@@ -1,15 +1,30 @@
 import axios from "axios";
+import { store } from "../redux/store";
 export default class BaseHttpService {
+  http;
   constructor() {
-    axios.defaults.baseURL = "https://slimmom-backend.herokuapp.com";
+    console.log(store.getState().authorization.tokens);
+    this.http = axios.create({
+      baseURL: "https://slimmom-backend.herokuapp.com",
+      headers: {
+        Authorization: `Bearer ${
+          store.getState().authorization.tokens.accessToken
+        }`,
+      },
+    });
   }
-  searchProduct = (values) => {
-    const { data } = axios.get(`/product?search=${values}`);
+  searchProduct = async (values) => {
+    const { data } = await this.http.get(`/product?search=${values}`);
     return data;
   };
-
-  get(str) {
-    str = "hello";
-    console.log(str);
-  }
+  login = async (values) => {
+    const { data } = await this.http.post(`/auth/login`, values);
+    // this.http.defaults.headers.Authorization = `Bearer ${data.token}`;
+    return data;
+  };
+  register = async (values) => {
+    const { data } = await this.http.post(`/auth/register`, values);
+    // this.http.defaults.headers.Authorization = `Bearer ${data.token}`;
+    return data;
+  };
 }

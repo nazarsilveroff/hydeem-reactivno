@@ -1,12 +1,20 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { loginError, loginRequest, loginSuccess, logOut, registerError, registerRequest, registerSuccess } from "./authActions";
+import {
+  loginError,
+  loginRequest,
+  loginSuccess,
+  logOut,
+  registerError,
+  registerRequest,
+  registerSuccess,
+} from "./authActions";
 
 export const tokenReducer = createReducer(
-  {},
+  { accessToken: null, refreshToken: null },
   {
     [registerSuccess]: (_, { payload }) => payload,
     [loginSuccess]: (_, { payload }) => payload,
-      [logOut]:()=>({}),
+    [logOut]: () => ({}),
   }
 );
 export const loaderReducer = createReducer(false, {
