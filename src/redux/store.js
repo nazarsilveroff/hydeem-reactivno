@@ -26,7 +26,7 @@ import {
 
 const persistedReducer = persistReducer(
   {
-    key: "auth",
+    key: "authorization",
     storage,
     whitelist: ["tokens"],
   },
@@ -42,7 +42,7 @@ const middleware = [
 ];
 export const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    authorization: persistedReducer,
   },
   middleware: middleware,
 });
