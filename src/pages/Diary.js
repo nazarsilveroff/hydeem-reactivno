@@ -1,6 +1,10 @@
 import React from "react";
+import DiaryPage from "../Components/diary/Diary"
+
 const Diary = () => {
-  return <h1>Diary</h1>;
+  return (
+    <DiaryPage/>
+  )
 };
 
 export default Diary;

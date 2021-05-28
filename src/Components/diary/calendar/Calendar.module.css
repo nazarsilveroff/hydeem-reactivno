@@ -1,0 +1,22 @@
+.datePicker {
+    font-family: Verdana;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    align-items: center;
+    color: #212121;
+    border: none;
+    width: 138px;
+    height: 20px;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .datePicker {
+    width: 219px;
+    height: 38px;
+    font-size: 34px;
+    line-height: 41px;
+    }
+}
