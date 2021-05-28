@@ -15,7 +15,6 @@ const registrationValues = {
 const loginValues = {
   email: "ddd@gmail.com",
   password: "123456",
-  username: "ddd",
 };
 const AuthForm = () => {
   const location = useLocation();
