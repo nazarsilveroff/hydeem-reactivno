@@ -14,17 +14,17 @@ export default class BaseHttpService {
     });
   }
   searchProduct = async (values) => {
-    const { data } = await this.http.get(`/product?search=${values}`);
+    const data = await this.http.get(`/product?search=${values}`);
     return data;
   };
   login = async (values) => {
-    const { data } = await this.http.post(`/auth/login`, values);
-    // this.http.defaults.headers.Authorization = `Bearer ${data.token}`;
+    const data = await this.http.post(`/auth/login`, values);
+    this.http.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
     return data;
   };
   register = async (values) => {
-    const { data } = await this.http.post(`/auth/register`, values);
-    // this.http.defaults.headers.Authorization = `Bearer ${data.token}`;
+    const data = await this.http.post(`/auth/register`, values);
+    this.http.defaults.headers.Authorization = `Bearer ${data.accessToken}`;
     return data;
   };
 }
