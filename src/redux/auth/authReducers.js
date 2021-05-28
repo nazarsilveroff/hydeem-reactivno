@@ -10,13 +10,18 @@ import {
 } from "./authActions";
 
 export const tokenReducer = createReducer(
-  { accessToken: null, refreshToken: null },
+  {},
   {
-    [registerSuccess]: (_, { payload }) => payload,
-    [loginSuccess]: (_, { payload }) => payload,
+    [registerSuccess]: (_, { payload }) => {},
+    [loginSuccess]: (_, { payload }) => ({
+      accessToken: payload.accessToken,
+      refreshToken: payload.refreshToken,
+      sid: payload.sid,
+    }),
     [logOut]: () => ({}),
   }
 );
+
 export const loaderReducer = createReducer(false, {
   [registerRequest]: (state) => !state,
   [registerSuccess]: (state) => !state,
