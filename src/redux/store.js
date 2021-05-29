@@ -16,7 +16,8 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import {  userReducers } from "./user/userReducers";
+import { userReducers } from "./user/userReducers";
+import { getInfoForDayReducer, getLocalDayReducer } from "./day/dayReducers";
 
 // const rootReduser = combineReducers({
 //   items: itemsReduser,
@@ -45,7 +46,8 @@ export const store = configureStore({
   reducer: {
     authorization: persistedReducer,
     user: userReducers,
-
+    localDay: getLocalDayReducer,
+    infoForDay: getInfoForDayReducer,
   },
   middleware: middleware,
 });
