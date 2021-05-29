@@ -7,6 +7,7 @@ import PrivateRoutes from "../../routes/PrivateRoutes";
 import PublicRoutes from "../../routes/PublicRoutes";
 import useWindowSize from "../diary/diaryHook/UseDiary";
 import UserBar from "../Header/UserBar/UserBar";
+import Summary from "../Summary/Summary";
 const Main = () => {
   const authToken = useSelector(
     (state) => state.authorization.tokens.accessToken
@@ -28,6 +29,7 @@ const Main = () => {
             )}
           </Switch>
         </Suspense>
+        <Summary/>
       </main>
     </>
   );
