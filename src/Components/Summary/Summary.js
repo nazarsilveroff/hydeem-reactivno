@@ -9,7 +9,6 @@ import style from "./Summary.module.css";
 const Summary = () => {
   const { date } = useSelector(getLocalDaySelector);
   const infoForDay = useSelector(getInfoForDaySelector);
-  console.log(infoForDay);
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = infoForDay;
   return (
