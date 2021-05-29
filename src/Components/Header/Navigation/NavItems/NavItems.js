@@ -1,18 +1,20 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-const NavItems = ({ item, authToken }) => {
+import style from "./NavItems.module.css";
+
+const NavItems = ({ item, authToken, toglBurger }) => {
   const location = useLocation();
   return (
     <>
       {!item.private && !item.restricted && (
-        <li className="text-md no-underline text-black hover:text-blue-dark ml-2 px-1">
+        <li className={style.navItemDefault}>
           <NavLink
             to={{
               pathname: item.path,
               state: { from: location.pathname },
             }}
-            className="font-medium"
-            activeClassName="text-green-500"
+            className={style.navItemLinkDefault}
+            activeClassName={style.activDefault}
             exact={item.exact}
           >
             {item.name}
@@ -20,14 +22,14 @@ const NavItems = ({ item, authToken }) => {
         </li>
       )}
       {authToken && item.private && !item.restricted && (
-        <li className="text-md no-underline text-black hover:text-blue-dark ml-2 px-1">
+        <li className={style.navItemDefault}>
           <NavLink
             to={{
               pathname: item.path,
               state: { from: location.pathname },
             }}
-            className="font-medium"
-            activeClassName="text-green-500"
+            className={style.navItemLinkDefault}
+            activeClassName={style.activDefault}
             exact={item.exact}
           >
             {item.name}
@@ -35,14 +37,14 @@ const NavItems = ({ item, authToken }) => {
         </li>
       )}
       {!authToken && !item.private && item.restricted && (
-        <li className="text-md no-underline text-black hover:text-blue-dark ml-2 px-1">
+        <li className={style.navItemDefault}>
           <NavLink
             to={{
               pathname: item.path,
               state: { from: location.pathname },
             }}
-            className="font-medium"
-            activeClassName="text-green-500"
+            className={style.navItemLinkDefault}
+            activeClassName={style.activDefault}
             exact={item.exact}
           >
             {item.name}
