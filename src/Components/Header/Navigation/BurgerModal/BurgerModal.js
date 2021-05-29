@@ -1,13 +1,43 @@
 import React from "react";
 import { mainRoutes } from "../../../../routes/mainRoutes";
-import NavItems from "../NavItems";
-const BurgerModal = ({ authToken }) => {
+import style from "./Burger.module.css";
+import cls from "classnames";
+
+import { NavLink, useLocation } from "react-router-dom";
+const BurgerModal = ({ toglBurger, hendleToglBurger, authToken }) => {
+  const location = useLocation();
+
   return (
-    <ul className="">
-      {mainRoutes.map((item) => (
-        <NavItems item={item} key={item.path} authToken={authToken} />
-      ))}
-    </ul>
+    <>
+      <button
+        className={cls(toglBurger ? style.burgerCloseBtn : style.burgerOpenBtn)}
+        type="button"
+        onClick={hendleToglBurger}
+      ></button>
+      {toglBurger && (
+        <div className={style.burgerModalWrapper}>
+          <ul className={style.burgerList}>
+            {mainRoutes.map((item) => (
+              <li key={item.path} className={style.navItem}>
+                {authToken && !item.restricted && (
+                  <NavLink
+                    to={{
+                      pathname: item.path,
+                      state: { from: location.pathname },
+                    }}
+                    className={style.navItemLink}
+                    activeClassName={style.activ}
+                    exact={item.exact}
+                  >
+                    {item.name}
+                  </NavLink>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
   );
 };
 

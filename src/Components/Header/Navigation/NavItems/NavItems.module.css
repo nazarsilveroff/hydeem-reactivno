@@ -1,0 +1,21 @@
+
+.navItemDefault{
+    margin-right: 22px;
+    display: inline;
+}
+.navItemDefault:last-child{
+    margin-bottom:0;
+}
+.navItemDefault:first-child{
+    display: none;
+}
+.navItemLinkDefault{    
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 13px;
+    text-decoration: none;
+    color: #9b9faa;
+    text-transform: uppercase;}
+.activDefault{color: #000;}
