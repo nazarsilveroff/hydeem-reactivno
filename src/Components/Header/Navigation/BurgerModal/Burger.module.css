@@ -16,7 +16,7 @@
 
 .burgerModalWrapper{
     position: absolute;
-    top: 80px;
+    top: 70px;
     right: 0px;
     bottom: 0px;
     z-index: 293;
@@ -56,5 +56,17 @@ padding-top: 64px;
     font-size: 18px;
     line-height: 1.2;
     font-weight: 700;
-    font-family: Verdana;}
+    font-family: Verdana;
+}
+@media screen and (min-width: 768px){
+.navItemLink{
+    font-size: 24px;
+    line-height: 1.2;
+}
+.burgerList{
+    padding: 108px 0;
+}
+}
+
+
 .activ{color: #fff;}
