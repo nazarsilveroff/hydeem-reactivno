@@ -1,12 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import {
+  getInfoForDaySelector,
+  getLocalDaySelector,
+} from "../../redux/day/daySelectors";
 import style from "./Summary.module.css";
 
 const Summary = () => {
+  const { date } = useSelector(getLocalDaySelector);
+  const infoForDay = useSelector(getInfoForDaySelector);
+  console.log(infoForDay);
+
+  const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = infoForDay;
   return (
     <>
       <div className={style.container}>
         <div className={style.summary}>
-          <h2 className={style.title}>Сводка за </h2>
+          <h2 className={style.title}>Сводка за {date}</h2>
           <div className={style.statistics}>
             <ul className={style.listName}>
               <li className={style.text}>Осталось</li>
@@ -15,10 +25,10 @@ const Summary = () => {
               <li className={style.text}>n% от нормы</li>
             </ul>
             <ul className={style.list}>
-              <li className={style.text}>0</li>
-              <li className={style.text}>0</li>
-              <li className={style.text}>0</li>
-              <li className={style.text}>0</li>
+              <li className={style.text}>{kcalLeft}</li>
+              <li className={style.text}>{kcalConsumed}</li>
+              <li className={style.text}>{dailyRate}</li>
+              <li className={style.text}>{percentsOfDailyRate}</li>
             </ul>
           </div>
         </div>
