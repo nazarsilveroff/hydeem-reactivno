@@ -19,6 +19,8 @@ import {
 import { userReducers } from "./user/userReducers";
 import { getInfoForDayReducer, getLocalDayReducer } from "./day/dayReducers";
 import { getSearchProductReducer } from "./product/productReducers";
+import { getDailyRateReducer } from "./daily-rate/dailyReducers";
+
 
 // const rootReduser = combineReducers({
 //   items: itemsReduser,
@@ -51,6 +53,7 @@ export const store = configureStore({
     localDay: getLocalDayReducer,
     infoForDay: getInfoForDayReducer,
     searchedProducts: getSearchProductReducer,
+    dailyRate: getDailyRateReducer,
   },
   middleware: middleware,
 });

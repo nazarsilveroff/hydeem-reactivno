@@ -15,7 +15,8 @@ export const registerOperations = (user) => async (dispatch) => {
     dispatch(registerSuccess(data));
     dispatch(loginOperations({ email: user.email, password: user.password }));
   } catch (error) {
-    dispatch(registerError(error.response.error.message));
+    console.log("error:> ", error.response.data.message);
+    dispatch(registerError(error.response.data.message));
   } finally {
   }
 };
@@ -25,7 +26,7 @@ export const loginOperations = (user) => async (dispatch) => {
     const { data } = await baseHttp.login(user);
     dispatch(loginSuccess(data));
   } catch (error) {
-    dispatch(loginError(error.response));
+    dispatch(loginError(error.response.data.message));
   } finally {
   }
 };
