@@ -21,6 +21,7 @@ const BurgerModal = ({ toglBurger, hendleToglBurger, authToken }) => {
               <li key={item.path} className={style.navItem}>
                 {authToken && !item.restricted && (
                   <NavLink
+                    onClick={hendleToglBurger}
                     to={{
                       pathname: item.path,
                       state: { from: location.pathname },
