@@ -6,7 +6,8 @@ import DiaryProductList from "./diaryProductList/DiaryProductList";
 import useWindowSize from "./diaryHook/UseDiary";
 import style from "./Diary.module.css";
 
-const Diary = () => {
+const Diary = (state) => {
+  console.log(state)
   let size = useWindowSize();
   const [toggleDiaryModal, setToggleDiaryModal] = useState(false);
   const handleToggler = (e) => {
