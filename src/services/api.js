@@ -55,9 +55,11 @@ export default class BaseHttpService {
     this.http.defaults.headers.Authorization = `Bearer ${
       store.getState().authorization.tokens.accessToken
     }`;
-    id
-      ? await this.http.post(`/daily-rate/${id}`, userCharacteristics)
-      : await this.http.post("/daily-rate", userCharacteristics);
+    if (id) {
+      return await this.http.post(`/daily-rate/${id}`, userCharacteristics);
+    } else {
+      return await this.http.post("/daily-rate", userCharacteristics);
+    }
   };
 
   getSummaryForDayData = async (value) => {
