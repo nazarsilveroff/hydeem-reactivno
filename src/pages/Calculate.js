@@ -1,17 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserId } from "../redux/auth/authSelectors";
+import { useDispatch } from "react-redux";
+
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
 
-// Назар, [30.05.21 22:02]
-// {
-//   "weight": 100,
-//   "height": 170,
-//   "age": 30,
-//   "desiredWeight": 60,
-//   "bloodType": 1
-// }
 const initialState = {
   height: "",
   age: "",
@@ -22,7 +14,6 @@ const initialState = {
 const Calculate = () => {
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
-  // const userId = useSelector(getUserId);
   const handleinputChange = (e) => {
     const { name, value } = e.target;
     setState((prevState) => ({
