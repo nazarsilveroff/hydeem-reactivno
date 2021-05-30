@@ -30,7 +30,7 @@ const Main = () => {
             )}
           </Switch>
         </Suspense>
-        {/* <Summary/> */}
+        <Summary />
       </main>
     </>
   );
