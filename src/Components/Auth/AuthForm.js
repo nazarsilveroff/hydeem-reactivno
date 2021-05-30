@@ -13,8 +13,8 @@ const registrationValues = {
   username: "ddd",
 };
 const loginValues = {
-  email: "ddd@gmail.com",
-  password: "123456",
+  email: "Tolstyak@mail.com",
+  password: "12345678",
 };
 const AuthForm = () => {
   const location = useLocation();
