@@ -7,6 +7,8 @@ import {
 } from "../../redux/auth/authOperations";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import schema from "./Validation/validator";
+import style from "./AuthForm.module.css";
+
 const registrationValues = {
   email: "ddd@gmail.com",
   password: "123456",
@@ -20,10 +22,10 @@ const AuthForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   return (
-    <div>
-      <div>
-        <h1>
-          {location.pathname === "/registration" ? "Registeration" : "Login"}
+    <div className={style.AuthFormContainer}>
+      <div className={style.navContainer}>
+        <h1 className={style.authTitle}>
+          {location.pathname === "/registration" ? "регистрация" : "вход"}
         </h1>
         <Formik
           initialValues={
@@ -38,71 +40,66 @@ const AuthForm = () => {
               : dispatch(loginOperations(values));
           }}
         >
-          <Form>
+          <Form className={style.form}>
             {location.pathname === "/registration" ? (
               <>
                 <label>
-                  Name:
                   <Field
                     type="text"
                     name="username"
-                    placeholder="Sara"
-                    className=""
+                    placeholder="Имя *"
+                    className={style.input}
                   />
                   <ErrorMessage name="username" component="div" />
                 </label>
                 <label>
-                  Email:
                   <Field
                     type="email"
                     name="email"
-                    placeholder="sara@gmail.com"
-                    className=""
+                    placeholder="Електронна почта *"
+                    className={style.input}
                   />
                   <ErrorMessage name="email" component="div" />
                 </label>
                 <label>
-                  Password:
                   <Field
                     type="password"
                     name="password"
-                    placeholder="**********"
-                    className=""
+                    placeholder="Пароль *"
+                    className={style.input}
                   />
                   <ErrorMessage name="password" component="div" />
                 </label>
-                <button type="submit" className="">
+                <button type="submit" className={style.buttons}>
                   {location.pathname === "/registration"
-                    ? "Sign up"
-                    : "Sign in"}
+                    ? "Регистрация"
+                    : "Вход"}
                 </button>
               </>
             ) : (
               <>
                 <label>
-                  Email:
                   <Field
                     type="email"
                     name="email"
-                    placeholder="sara@gmail.com"
-                    className=""
+                    placeholder="Електронна почта *"
+                    className={style.input}
                   />
                   <ErrorMessage name="email" component="div" />
                 </label>
                 <label>
-                  Password:
                   <Field
                     type="password"
                     name="password"
-                    placeholder="**********"
-                    className=""
+                    placeholder="Пароль *"
+                    className={style.input}
                   />
                   <ErrorMessage name="password" component="div" />
                 </label>
-                <button type="submit" className="">
+                <button type="submit" className={style.buttons}>
                   {location.pathname === "/registration"
-                    ? "Sign up"
-                    : "Sign in"}
+                    ? "Регистрация"
+                    : "Вход"}
                 </button>
               </>
             )}
