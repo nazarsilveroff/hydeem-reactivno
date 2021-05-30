@@ -1,16 +1,17 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../../redux/auth/authActions";
+import { usernameSelector } from "../../../redux/auth/authSelectors";
 const UserBar = () => {
+  const dispatch = useDispatch();
+  const username = useSelector(usernameSelector);
   return (
     <div>
       <div>
-        <p>user name</p>
+        <p>{username}</p>
       </div>
-      <button
-        className=""
-        type="button"
-        // onClick={signOut}
-      >
-        Log Out
+      <button className="" type="button" onClick={() => dispatch(logOut())}>
+        Выход
       </button>
     </div>
   );
