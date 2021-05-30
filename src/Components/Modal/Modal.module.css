@@ -1,0 +1,209 @@
+.modalWindow {
+  width: 320px;
+  height: 598px;
+  position: absolute;
+  top: 35px;
+  width: 100%;
+  padding: 40px 15px 60px;
+  background-color: white;
+}
+
+.modalOverlay {
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(33, 33, 33, 0.12);
+  z-index: 1200;
+  top: 80px;
+}
+
+.closeModalBtn {
+  background-image: url("../../img/svg/icon-cross.svg");
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-color: #fff;
+  width: 12px;
+  height: 12px;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+}
+
+.dailyCaloryIntakeResultContainer {
+  border-bottom: 1px solid #e0e0e0;
+  width: 290px;
+  height: 6px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  height: 92px;
+  width: 290px;
+  display: flex;
+  justify-content: center;
+}
+
+.dailyCaloryIntakeTitle {
+  font-family: Verdana-Bold;
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.dailyCaloryIntakeNumber {
+  font-family: Verdana-Bold;
+  font-size: 48px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #264061;
+  line-height: 58px;
+}
+.dailyCaloryIntakeKcal {
+  font-family: Verdana-Bold;
+  font-size: 16px;
+  color: #264061;
+  letter-spacing: 0.04em;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.forbiddenProductsTtile,
+.forbiddenProductsItems {
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  font-family: Verdana;
+}
+
+.forbiddenProductsTtile {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.forbiddenProductsContainer {
+  margin-top: 14px;
+  height: 100px;
+  overflow: hidden;
+  margin-bottom: 40px;
+  overflow-y: scroll;
+}
+/* .forbiddenProductsContainer ::-webkit-scrollbar {
+  display: block;
+  height: 2px;
+  background-color: #264061;
+} */
+
+.forbiddenProductsItems {
+  list-style-type: none;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: 0.04em;
+  font-family: Verdana;
+  font-style: normal;
+  font-weight: 400;
+  color: #9b9faa;
+}
+
+.forbiddenProductsList {
+  padding: 0;
+}
+
+.startGettingSlimButton {
+  padding: 13px 0;
+  display: block;
+  margin: 0 auto;
+  width: 176px;
+  border: 2px solid #fc842d;
+  border-radius: 30px;
+  background-color: #fc842d;
+  color: #fff;
+  font-weight: 700;
+  font-family: Verdana;
+  font-size: 14px;
+  line-height: 1.21;
+  text-align: center;
+  letter-spacing: 0.04em;
+  outline: none;
+  box-shadow: 0px 4px 10px rgba(252, 132, 45, 0.5);
+  text-decoration: none;
+}
+
+.forbiddenProductsInput {
+  border: 0;
+  border-bottom: 1px solid #e0e0e0;
+  width: 290px;
+  height: 26px;
+  outline: none;
+}
+
+.findForbiddenProductsIcon {
+  background-image: url("../../img/svg/icon-search.svg");
+  display: block;
+  width: 30px;
+  height: 30px;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+  .modalWindow {
+    width: 594px;
+    height: 580px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+    background-color: #ffffff;
+    box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
+    padding: 64px 42px 68px 42px;
+  }
+
+  .dailyCaloryIntakeTitle {
+    display: block;
+    width: 509px;
+    height: 70px;
+    margin: 0 auto;
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .dailyCaloryIntakeResultContainer {
+    margin: 0 auto;
+    width: 330px;
+    margin-top: 16px;
+  }
+
+  .forbiddenProductsTtile {
+    margin-top: 12px;
+  }
+
+  .dailyCaloryIntakeContainer {
+    padding-left: 83px;
+    padding-right: 83px;
+  }
+
+  .forbiddenProductsInput {
+    width: 330px;
+  }
+
+  .forbiddenProductsTtile {
+    margin-bottom: 20px;
+  }
+
+  .modalOverlay {
+    top: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .modalWindow {
+    width: 690px;
+    height: 580px;
+    padding: 64px 90px 81px;
+  }
+}
