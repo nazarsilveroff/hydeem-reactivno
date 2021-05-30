@@ -18,6 +18,7 @@ import {
 } from "redux-persist";
 import { userReducers } from "./user/userReducers";
 import { getInfoForDayReducer, getLocalDayReducer } from "./day/dayReducers";
+import { getSearchProductReducer } from "./product/productReducers";
 
 // const rootReduser = combineReducers({
 //   items: itemsReduser,
@@ -42,12 +43,14 @@ const middleware = [
     },
   }),
 ];
+
 export const store = configureStore({
   reducer: {
     authorization: persistedReducer,
     user: userReducers,
     localDay: getLocalDayReducer,
     infoForDay: getInfoForDayReducer,
+    searchedProducts: getSearchProductReducer,
   },
   middleware: middleware,
 });

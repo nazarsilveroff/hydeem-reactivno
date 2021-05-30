@@ -54,8 +54,6 @@ color: #FFFFFF;
     .diaryForm {
         display: flex;
         flex-direction: row;
-        /* justify-content: space-between; */
-        margin-top: 60px;
     }
 
     .diaryInput:first-child {
@@ -82,7 +80,38 @@ color: #FFFFFF;
         height: 35px;
         margin-right: 30px;
     }
+}
 
+@media screen and (min-width: 1280px) {
+    .diaryForm {
+        display: flex;
+        flex-direction: row;
+    }
 
+    .diaryInput:first-child {
+        margin-bottom: 0px;
+    }
 
+    .diaryInput {
+        width: 105px;
+        height: 35px;
+        border: none;
+        border-bottom: 1px solid #E0E0E0;
+        margin-right: 75px;
+    
+        font-family: Verdana;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 14px;
+        line-height: 17px;
+        letter-spacing: 0.04em;
+        color: #9B9FAA;
+        text-align: right;
+    }
+    .diaryInput:first-child {
+        width: 240px;
+        height: 35px;
+        margin-right: 30px;
+        text-align: left;
+    }
 }

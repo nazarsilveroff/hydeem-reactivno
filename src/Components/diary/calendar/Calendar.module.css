@@ -10,6 +10,8 @@
     width: 138px;
     height: 20px;
     text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 @media screen and (min-width: 768px) {
@@ -18,5 +20,18 @@
     height: 38px;
     font-size: 34px;
     line-height: 41px;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .datePicker {
+    width: 219px;
+    height: 38px;
+    font-size: 34px;
+    line-height: 41px;
+    margin-top: 135px;
+    margin-bottom: 60px;
     }
 }
