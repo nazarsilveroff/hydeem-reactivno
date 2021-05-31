@@ -1,7 +1,9 @@
 import React from 'react';
+import useModal from '../../Modal/ModalHook/useModal';
 
-const AddProductModal = ({children, toggleDiaryModal}) => {
-    return toggleDiaryModal ? ( 
+const AddProductModal = ({children}) => {
+    const {isOpen} = useModal();
+    return isOpen ? ( 
         <>
             {children}
         </>
