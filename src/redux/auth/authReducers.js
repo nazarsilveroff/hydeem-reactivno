@@ -1,5 +1,6 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import {
+  clearError,
   loginError,
   loginRequest,
   loginSuccess,
@@ -34,6 +35,7 @@ export const loaderReducer = createReducer(false, {
   [logOut]: () => false,
 });
 export const erorrReducer = createReducer("", {
+  [clearError]: () => null,
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
   [logOut]: () => "",
