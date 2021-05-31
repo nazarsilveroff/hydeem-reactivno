@@ -1,6 +1,12 @@
 .container {
   width: 320px;
   margin: 0 auto;
+  padding-bottom: 40px;
+}
+.container__active {
+  width: 320px;
+  margin: 0 auto;
+  padding-bottom: 40px;
 }
 .title {
   margin-bottom: 40px;
@@ -30,6 +36,10 @@
 
 .label {
   position: relative;
+}
+
+input:invalid {
+  border-color: red;
 }
 
 .labelValue {
@@ -72,6 +82,7 @@
   letter-spacing: 0.04em;
   outline: none;
   margin: 0 auto;
+  margin-bottom: 40px;
 }
 
 .button:hover {
@@ -136,7 +147,7 @@ input[type="radio"]:checked + label:after {
   display: block;
   position: absolute;
   bottom: 14%;
-  left: 15%;
+  left: 13%;
 
   width: 12px;
   height: 12px;
@@ -166,6 +177,24 @@ input[type="number"] {
 }
 
 @media screen and (min-width: 768px) {
+  .container__active {
+    box-sizing: content-box;
+    width: 100%;
+    margin-left: 86px;
+    margin-right: 74px;
+    margin-top: 100px;
+    background-image: url(../img/banana@1x.png), url(../img/strawberry@1x.png),
+      url(../img/leaves-login-tablet@1x.png), url(../img/spot-tablet.png);
+    background-repeat: no-repeat;
+    background-position: top 100% right -244px, top 323px right 57px,
+      bottom -84px left -325px, 100% 100%;
+
+    min-height: 1024px;
+  }
+  .container {
+    width: 605px;
+    margin-top: 100px;
+  }
   .title {
     font-size: 30px;
     line-height: 36px;
@@ -191,6 +220,22 @@ input[type="number"] {
 }
 
 @media screen and (min-width: 1280px) {
+  .container__active {
+    box-sizing: content-box;
+
+    margin: auto auto 100px 115px;
+    padding-top: 144px;
+    background-image: url(../img/banana@2x.png), url(../img/strawberry@2x.png),
+      url(../img/leaves-login-tablet@2x.png), url(../img/spot.png);
+    background-repeat: no-repeat;
+    background-position: 127% -73%, bottom 62% right 90px, top -186px left 38%,
+      93% -73%;
+    background-size: 1000px, 500px, 700px, 700px;
+  }
+  .container {
+    margin-left: 115px;
+    margin-top: 144px;
+  }
   .form {
     margin: 0;
   }
