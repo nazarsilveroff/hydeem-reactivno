@@ -10,7 +10,6 @@ export const getDailyRateOperation =
       values[char] = Number(userCharacteristics[char]);
     }
     try {
-      console.log(values);
       const { data } = await baseHTTP.getDailyRate(values, userId);
       console.log(data);
       dispatch(getDailyRate(data));
