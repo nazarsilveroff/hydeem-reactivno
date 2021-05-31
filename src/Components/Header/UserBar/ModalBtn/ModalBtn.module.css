@@ -1,3 +1,11 @@
-.ModalBtn{
-    z-index: 1201;
+.ModalBtn {
+  width: 20px;
+  height: 15px;
+  z-index: 1201;
+  background-image: url(../../../../img/svg/icon-back.svg);
+  background-position: cover;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  background-color: transparent;
 }
