@@ -19,7 +19,8 @@ const AuthForm = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   return (
-    <div className={style.AuthFormContainer}>
+    <div className={style.container}>
+      <div className={style.AuthFormContainer}></div>
       <div className={style.navContainer}>
         <h1 className={style.authTitle}>{location.pathname === "/registration" ? "регистрация" : "вход"}</h1>
         <Formik

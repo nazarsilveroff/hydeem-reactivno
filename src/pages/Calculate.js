@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import useModal from "../Components/Modal/ModalHook/useModal";
@@ -143,3 +144,6 @@ const Calculate = () => {
 };
 
 export default Calculate;
+
+              
+                  
