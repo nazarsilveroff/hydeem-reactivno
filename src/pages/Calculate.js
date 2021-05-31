@@ -1,7 +1,7 @@
+
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import useModal from "../Components/Modal/ModalHook/useModal";
-import { authorizationSelector } from "../redux/auth/authSelectors";
 
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
@@ -11,25 +11,22 @@ const initialState = {
   age: "",
   weight: "",
   desiredWeight: "",
-  bloodType: "",
+  bloodType: " "
 };
 const Calculate = () => {
   const { toggle } = useModal();
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
-  const authorization = useSelector(authorizationSelector);
-
-  const handleinputChange = (e) => {
+  const handleinputChange = e => {
     const { name, value } = e.target;
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = e => {
     e.preventDefault();
     dispatch(getDailyRateOperation(state));
-    !authorization && toggle();
   };
   return (
     <>
@@ -147,3 +144,6 @@ const Calculate = () => {
 };
 
 export default Calculate;
+
+              
+                  
