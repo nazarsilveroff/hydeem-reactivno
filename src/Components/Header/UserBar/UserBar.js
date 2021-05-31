@@ -6,6 +6,7 @@ import { userNameSelector } from "../../../redux/user/userSelectors";
 import classNames from "classnames";
 import useWindowSize from "../../diary/diaryHook/UseDiary";
 import style from "./UserBar.module.css";
+import ModalBtn from "../UserBar/ModalBtn/ModalBtn";
 
 const UserBar = () => {
   const size = useWindowSize();
@@ -21,6 +22,7 @@ const UserBar = () => {
         size.width > 1280 && style.userBox3
       )}
     >
+      <ModalBtn />
       <div className={style.userInfo}>
         <span className={style.name}>{username}</span>
       </div>
