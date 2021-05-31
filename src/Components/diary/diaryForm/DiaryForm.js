@@ -21,10 +21,11 @@ const DiaryForm = () => {
       setValue(e.target.value);
       e.target.value.length > 2 && dispatch(getSearchProductOperation(value));
     }
+
   };
 
   const handleProduct = (e) => {
-    console.log("awfwaf")
+    console.log(`${e.target.textContent}:`, e.target.id)
   }
 
   let size = useWindowSize();
@@ -40,11 +41,11 @@ const DiaryForm = () => {
           list="products"
           autoComplete="off"
         />
-        <datalist id="products" >
+        <ul className={styles.productResultList} id="products" >
           {products.map((item) => (
-            <option id={item._id} key={item._id} value={item.title.ru} onClick={handleProduct}></option>
+            <li className={styles.productResultListItem} id={item._id} key={item._id} onClick={handleProduct}>{item.title.ru}</li>
           ))}
-        </datalist>
+        </ul>
         <input
           name="weight"
           className={styles.diaryInput}
