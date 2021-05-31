@@ -1,3 +1,5 @@
+
+
 .diaryForm {
     display: flex;
     flex-direction: column;
@@ -48,6 +50,21 @@ letter-spacing: 0.04em;
 
 color: #FFFFFF;
 }
+.productResultList{
+    width: 295px;
+    max-height: 300px;
+    position: absolute;
+    top: 267px;
+    background: white;
+    overflow-y: scroll;
+}
+.productResultListItem{
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+.productResultListItem:hover{
+    background-color: dimgray;
+}
 
 
 @media screen and (min-width: 768px) {
@@ -79,6 +96,10 @@ color: #FFFFFF;
         width: 240px;
         height: 35px;
         margin-right: 30px;
+    }
+    .productResultList{
+        width: 240px;
+        top: 312px;
     }
 }
 
@@ -113,5 +134,9 @@ color: #FFFFFF;
         height: 35px;
         margin-right: 30px;
         text-align: left;
+    }
+    .productResultList{
+        width: 244px;
+        top: 388px;
     }
 }
