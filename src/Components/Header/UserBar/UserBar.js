@@ -39,7 +39,7 @@ const UserBar = () => {
         </div>
       ) : null}
 
-      {!authorization && isOpen && (
+      {isOpen && (
         <div
           className={classNames(
             size.width < 768 && style.userBox1,

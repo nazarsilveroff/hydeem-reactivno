@@ -11,6 +11,7 @@ const DiaryForm = () => {
   const [value, setValue] = useState();
   const dispatch = useDispatch();
   const products = useSelector(getSearchProductsSelector);
+
   const onHandleSubmit = (e) => {
     e.preventDefault();
   };
@@ -21,6 +22,10 @@ const DiaryForm = () => {
       e.target.value.length > 2 && dispatch(getSearchProductOperation(value));
     }
   };
+
+  const handleProduct = (e) => {
+    console.log("awfwaf")
+  }
 
   let size = useWindowSize();
   return (
@@ -35,9 +40,9 @@ const DiaryForm = () => {
           list="products"
           autoComplete="off"
         />
-        <datalist id="products">
+        <datalist id="products" >
           {products.map((item) => (
-            <option key={item._id} value={item.title.ru}></option>
+            <option id={item._id} key={item._id} value={item.title.ru} onClick={handleProduct}></option>
           ))}
         </datalist>
         <input
