@@ -1,8 +1,9 @@
+
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useModal from "../Components/Modal/ModalHook/useModal";
 import { authorizationSelector } from "../redux/auth/authSelectors";
-
+import cssStyles from "classnames";
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
 
@@ -11,42 +12,51 @@ const initialState = {
   age: "",
   weight: "",
   desiredWeight: "",
-  bloodType: "",
+  bloodType: " "
 };
 const Calculate = () => {
+  const authorization = useSelector(authorizationSelector);
   const { toggle } = useModal();
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
-  const authorization = useSelector(authorizationSelector);
-
-  const handleinputChange = (e) => {
+  const handleinputChange = e => {
     const { name, value } = e.target;
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = e => {
     e.preventDefault();
     dispatch(getDailyRateOperation(state));
     !authorization && toggle();
   };
   return (
     <>
-      <div className={styles.container}>
+      <div
+        className={cssStyles(
+          authorization ? styles.container : styles.container__active
+        )}
+      >
         <div className={styles.form__box}>
           <form className={styles.form} onSubmit={handleFormSubmit}>
-            <h2 className={styles.title}>Узнай свою суточную норму калорий</h2>
+            <h2 className={styles.title}>
+              {authorization
+                ? "Узнай свою суточную норму калорий"
+                : "Просчитай свою суточную норму калорий прямо сейчас"}
+            </h2>
             <div className={styles.inputWrapper}>
               <div className={styles.inputBlock}>
                 <label className={styles.label}>
                   <input
                     className={styles.input}
                     placeholder=" "
-                    type="text"
+                    type="number"
                     name="height"
                     value={state.height}
                     onChange={handleinputChange}
+                    min="100"
+                    max="260"
                   />
                   <p className={styles.labelValue}>Рост*</p>
                 </label>
@@ -54,10 +64,12 @@ const Calculate = () => {
                   <input
                     className={styles.input}
                     placeholder=" "
-                    type="text"
+                    type="number"
                     name="age"
                     onChange={handleinputChange}
                     value={state.age}
+                    min="12"
+                    max="100"
                   />
                   <p className={styles.labelValue}>Возраст*</p>
                 </label>
@@ -65,10 +77,12 @@ const Calculate = () => {
                   <input
                     className={styles.input}
                     placeholder=" "
-                    type="text"
+                    type="number"
                     name="weight"
                     onChange={handleinputChange}
                     value={state.weight}
+                    min="40"
+                    max="150"
                   />
                   <p className={styles.labelValue}>Текущий вес*</p>
                 </label>
@@ -78,10 +92,12 @@ const Calculate = () => {
                   <input
                     className={styles.input}
                     placeholder=" "
-                    type="text"
+                    type="number"
                     name="desiredWeight"
                     onChange={handleinputChange}
                     value={state.desiredWeight}
+                    min="40"
+                    max="150"
                   />
                   <p className={styles.labelValue}>Желаемый вес*</p>
                 </label>
@@ -147,3 +163,6 @@ const Calculate = () => {
 };
 
 export default Calculate;
+
+              
+                  
