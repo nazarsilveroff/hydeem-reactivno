@@ -8,6 +8,8 @@ import PublicRoutes from "../../routes/PublicRoutes";
 import useWindowSize from "../diary/diaryHook/UseDiary";
 import UserBar from "../Header/UserBar/UserBar";
 import Summary from "../Summary/Summary";
+import style from "./Main.module.css";
+
 const Main = () => {
   const authToken = useSelector(
     (state) => state.authorization.tokens.accessToken
@@ -18,7 +20,7 @@ const Main = () => {
       {size.width < 768 && <UserBar />}
       {size.width > 1280 && <UserBar />}
 
-      <main>
+      <main className={style.container}>
         <Suspense fallback={"Loading..."}>
           <Switch>
             {mainRoutes.map((item) =>
