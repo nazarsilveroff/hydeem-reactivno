@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import styles from "./Modal.module.css";
@@ -7,13 +7,31 @@ import styles from "./Modal.module.css";
 const modalRoot = document.getElementById("modal-root");
 
 const Modal = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen]);
+
+  const onHandleEscape = useCallback(
+    event => {
+      if (event.code === "Escape") toggle();
+    },
+    [toggle]
+  );
+
+  useEffect(
+    () => {
+      if (isOpen) window.addEventListener("keydown", onHandleEscape);
+      return () => {
+        window.removeEventListener("keydown", onHandleEscape);
+      };
+    },
+    [onHandleEscape, isOpen]
+  );
 
   return createPortal(
     isOpen ? (
       <div className={styles.modalOverlay}>
         <div className={styles.modalWindow}>
-          <button className={styles.closeModalBtn} />
+          <button className={styles.closeModalBtn} onClick={toggle} />
           <h2 className={styles.dailyCaloryIntakeTitle}>Ваша рекомендуемая суточная норма калорий составляет</h2>
           <div className={styles.dailyCaloryIntakeContainer}>
             <div className={styles.dailyCaloryIntakeResultContainer}>
