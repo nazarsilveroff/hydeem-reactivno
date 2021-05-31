@@ -6,11 +6,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSearchProductOperation } from "../../../redux/product/productOperations";
 import { debounce } from "debounce";
 import { getSearchProductsSelector } from "../../../redux/product/productSelectors";
+import { getLocalDaySelector } from "../../../redux/day/daySelectors";
 
+const initialState = {
+  selected: true,
+  product: "",
+  date: "",
+  id: "",
+  query: "",
+  weight: 0,
+};
 const DiaryForm = () => {
-  const [value, setValue] = useState();
+  const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
   const products = useSelector(getSearchProductsSelector);
+  const selectedDate = useSelector(getLocalDaySelector);
+
+  // console.log(state);
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
@@ -18,15 +30,31 @@ const DiaryForm = () => {
 
   const onHandleChange = (e) => {
     if (e.target.value && e.target.name === "search") {
-      setValue(e.target.value);
-      e.target.value.length > 2 && dispatch(getSearchProductOperation(value));
+      setState((prevState) => ({
+        ...prevState,
+        selected: !prevState.selected,
+        query: e.target.value,
+        date: selectedDate.date,
+      }));
+      e.target.value.length > 2 &&
+        dispatch(getSearchProductOperation(state.query));
+    } else if (e.target.value && e.target.name === "weight") {
+      setState((prevState) => ({
+        ...prevState,
+        weight: Number(e.target.value),
+      }));
     }
-
   };
 
   const handleProduct = (e) => {
-    console.log(`${e.target.textContent}:`, e.target.id)
-  }
+    console.log(`${e.target.textContent}:`, e.target.id);
+    setState((prevState) => ({
+      ...prevState,
+      selected: !prevState.selected,
+      product: e.target.textContent,
+      id: e.target.id,
+    }));
+  };
 
   let size = useWindowSize();
   return (
@@ -38,18 +66,28 @@ const DiaryForm = () => {
           className={styles.diaryInput}
           type="text"
           placeholder="Введите название продукта"
-          list="products"
           autoComplete="off"
         />
-        <ul className={styles.productResultList} id="products" >
-          {products.map((item) => (
-            <li className={styles.productResultListItem} id={item._id} key={item._id} onClick={handleProduct}>{item.title.ru}</li>
-          ))}
+        <ul className={styles.productResultList} id="products">
+          {products.map(
+            (item) =>
+              state.selected && (
+                <li
+                  className={styles.productResultListItem}
+                  id={item._id}
+                  key={item._id}
+                  onClick={handleProduct}
+                >
+                  {item.title.ru}
+                </li>
+              )
+          )}
         </ul>
         <input
+          onChange={onHandleChange}
           name="weight"
           className={styles.diaryInput}
-          type="text"
+          type="number"
           placeholder="Граммы"
         />
         <button
