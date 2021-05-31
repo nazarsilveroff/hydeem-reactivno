@@ -6,14 +6,13 @@ import DiaryProductList from "./diaryProductList/DiaryProductList";
 import useWindowSize from "./diaryHook/UseDiary";
 import style from "./Diary.module.css";
 
-const Diary = (state) => {
-  console.log(state)
+const Diary = () => {
   let size = useWindowSize();
   const [toggleDiaryModal, setToggleDiaryModal] = useState(false);
   const handleToggler = (e) => {
     setToggleDiaryModal(!toggleDiaryModal);
   };
-  // console.log(toggleDiaryModal)
+
   return (
     <div className={style.container}>
       <Calendar />
