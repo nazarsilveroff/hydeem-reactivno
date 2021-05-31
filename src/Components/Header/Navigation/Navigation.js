@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { mainRoutes } from "../../../routes/mainRoutes";
 import UserBar from "../UserBar/UserBar";
 import style from "./Nav.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BurgerModal from "./BurgerModal/BurgerModal";
 import NavItems from "./NavItems/NavItems";
 import useWindowSize from "../../diary/diaryHook/UseDiary";
+import { errorSelector } from "../../../redux/auth/authSelectors";
+import { clearError } from "../../../redux/auth/authActions";
 
 const Navigation = () => {
   const [toglBurger, setToglBurger] = useState(false);
@@ -17,6 +19,15 @@ const Navigation = () => {
     (state) => state.authorization.tokens.accessToken
   );
   const size = useWindowSize();
+  const error = useSelector(errorSelector);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        dispatch(clearError());
+      }, 3000);
+    }
+  }, [error, dispatch]);
 
   return (
     <>
@@ -63,6 +74,7 @@ const Navigation = () => {
           </div>
         </nav>
       )}
+      {error && <h3 className={style.error}>{error}</h3>}
     </>
   );
 };

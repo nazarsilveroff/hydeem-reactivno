@@ -11,3 +11,4 @@ export const loginError = createAction("auth/loginError");
 
 
 export const logOut = createAction("auth/logOut");
+export const clearError = createAction("auth/clearError");
