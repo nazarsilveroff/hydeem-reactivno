@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import useModal from "../Components/Modal/ModalHook/useModal";
 
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
@@ -9,19 +10,20 @@ const initialState = {
   age: "",
   weight: "",
   desiredWeight: "",
-  bloodType: " ",
+  bloodType: " "
 };
 const Calculate = () => {
+  const { toggle } = useModal();
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
-  const handleinputChange = (e) => {
+  const handleinputChange = e => {
     const { name, value } = e.target;
-    setState((prevState) => ({
+    setState(prevState => ({
       ...prevState,
-      [name]: value,
+      [name]: value
     }));
   };
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = e => {
     e.preventDefault();
     dispatch(getDailyRateOperation(state));
   };
@@ -130,7 +132,7 @@ const Calculate = () => {
                 </div>
               </div>
             </div>
-            <button className={styles.button} type="submit">
+            <button className={styles.button} type="submit" onClick={toggle}>
               Похудеть
             </button>
           </form>

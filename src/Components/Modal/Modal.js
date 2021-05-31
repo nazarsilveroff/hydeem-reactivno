@@ -1,31 +1,14 @@
 import { Field, Form, Formik } from "formik";
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { createPortal } from "react-dom";
 import { Link } from "react-router-dom";
 import styles from "./Modal.module.css";
+import useModal from "./ModalHook/useModal";
 
 const modalRoot = document.getElementById("modal-root");
 
 const Modal = () => {
-  const [isOpen, setIsOpen] = useState(true);
-  const toggle = useCallback(() => setIsOpen(!isOpen), [isOpen]);
-
-  const onHandleEscape = useCallback(
-    event => {
-      if (event.code === "Escape") toggle();
-    },
-    [toggle]
-  );
-
-  useEffect(
-    () => {
-      if (isOpen) window.addEventListener("keydown", onHandleEscape);
-      return () => {
-        window.removeEventListener("keydown", onHandleEscape);
-      };
-    },
-    [onHandleEscape, isOpen]
-  );
+  const { isOpen, toggle } = useModal();
 
   return createPortal(
     isOpen ? (
@@ -52,7 +35,7 @@ const Modal = () => {
                 <li className={styles.forbiddenProductsItems}>1. Мучные продукты</li>
               </ul>
             </div>
-            <Link type="button" className={styles.startGettingSlimButton}>
+            <Link type="button" to="/login" className={styles.startGettingSlimButton} onClick={toggle}>
               Начать худеть
             </Link>
           </div>
