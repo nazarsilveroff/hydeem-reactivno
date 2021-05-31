@@ -1,9 +1,9 @@
 .ModalBtn {
   width: 20px;
-  height: 15px;
+  height: 24px;
   z-index: 1201;
   background-image: url(../../../../img/svg/icon-back.svg);
-  background-position: cover;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
   border: none;

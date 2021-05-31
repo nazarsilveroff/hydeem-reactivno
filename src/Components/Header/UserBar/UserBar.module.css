@@ -1,7 +1,7 @@
 .userBox1 {
   display: flex;
   align-items: center;
-  max-width: 767px;
+  /* max-width: 767px; */
   height: 40px;
   padding: 0 15px;
   margin: 0 auto;
@@ -11,7 +11,7 @@
 .userBox2 {
   display: flex;
   align-items: center;
-  max-width: 767px;
+  /* max-width: 767px; */
   height: 40px;
   padding: 0 15px;
   margin: 0 auto;
@@ -21,7 +21,7 @@
 .userBox3 {
   display: flex;
   align-items: center;
-  max-width: 767px;
+  /* max-width: 767px; */
   height: 40px;
   padding: 0 15px;
   margin: 0 auto;
@@ -69,9 +69,10 @@
 @media screen and (min-width: 1280px) {
   .userBox3 {
     max-height: 100%;
-    margin-left: auto;
-    margin-right: 115px;
+    padding-right: 115px;
     background-color: #f0f1f3;
+    margin-left: auto;
+    margin-right: unset;
   }
   .name {
     margin-right: 22px;
