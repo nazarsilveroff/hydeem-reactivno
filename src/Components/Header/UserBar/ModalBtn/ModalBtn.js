@@ -1,7 +1,10 @@
 import React from "react";
+import useModal from "../../../Modal/ModalHook/useModal";
 import style from "./ModalBtn.module.css";
+
 const ModalBtn = () => {
-  return <button className={style.ModalBtn}>CloseModal</button>;
+  const { toggle } = useModal();
+  return <button className={style.ModalBtn} onClick={toggle}></button>;
 };
 
 export default ModalBtn;

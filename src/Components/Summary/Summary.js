@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { authorizationSelector } from "../../redux/auth/authSelectors";
 import {
   getInfoForDaySelector,
   getLocalDaySelector,
@@ -9,9 +10,10 @@ import style from "./Summary.module.css";
 const Summary = () => {
   const { date } = useSelector(getLocalDaySelector);
   const infoForDay = useSelector(getInfoForDaySelector);
+  const authorization = useSelector(authorizationSelector);
 
   const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = infoForDay;
-  return (
+  return authorization ? (
     <>
       <div className={style.container}>
         <div className={style.summary}>
@@ -39,7 +41,7 @@ const Summary = () => {
         </div>
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default Summary;
