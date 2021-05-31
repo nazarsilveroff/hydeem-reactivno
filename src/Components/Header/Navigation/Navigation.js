@@ -47,7 +47,7 @@ const Navigation = () => {
                   ))}
                 </ul>
               )}
-              {size.width <= 1280 && (
+              {size.width < 1280 && (
                 <>
                   {size.width > 768 && size.width <= 1280 ? <UserBar /> : null}
 

@@ -18,8 +18,7 @@ const Main = () => {
   return (
     <>
       {size.width < 768 && <UserBar />}
-      {size.width > 1280 && <UserBar />}
-
+      {size.width >= 1280 && <UserBar />}
       <main className={style.container}>
         <Suspense fallback={"Loading..."}>
           <Switch>

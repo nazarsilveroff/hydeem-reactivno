@@ -22,8 +22,8 @@ const UserBar = () => {
         <div
           className={classNames(
             size.width < 768 && style.userBox1,
-            size.width > 768 && style.userBox2,
-            size.width > 1280 && style.userBox3
+            size.width >= 768 && style.userBox2,
+            size.width >= 1280 && style.userBox3
           )}
         >
           <div className={style.userInfo}>
