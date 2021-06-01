@@ -18,7 +18,7 @@ import {
 } from "redux-persist";
 import { userReducers } from "./user/userReducers";
 import { getInfoForDayReducer, getLocalDayReducer } from "./day/dayReducers";
-import { getSearchProductReducer } from "./product/productReducers";
+import { getSearchProductReducer, productsReducer } from "./product/productReducers";
 import { getDailyRateReducer } from "./daily-rate/dailyReducers";
 import { openModalReducer } from "./modal/modalReducers";
 
@@ -55,6 +55,7 @@ export const store = configureStore({
     searchedProducts: getSearchProductReducer,
     dailyRate: getDailyRateReducer,
     openModal: openModalReducer,
+    products: productsReducer
   },
   middleware: middleware,
 });
