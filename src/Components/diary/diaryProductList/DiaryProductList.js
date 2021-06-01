@@ -11,29 +11,49 @@ import styles from "../diaryProductList/DiaryProductList.module.css";
 
 const DiaryProductList = () => {
   let size = useWindowSize();
+  const dispatch = useDispatch();
   const infoForDay = useSelector(userInfoForDay);
   const selectedDate = useSelector(getLocalDaySelector);
-  const currentDate = infoForDay?.filter(day => day.date === selectedDate.date)
-  const eatenProducts = currentDate[0]?.eatenProducts
-  const currentDateId = test.filter(item => item._id)
-  console.log(currentDateId)
-  const dispatch = useDispatch();
-  const {toggle} = useModal()
+
+  const currentDate = infoForDay?.filter(
+    (day) => day.date === selectedDate.date
+  );
+
+  const eatenProducts = currentDate[0]?.eatenProducts;
+
+  const currentDateId = currentDate[0]?._id;
+
+  // console.log(currentDate);
+  // // console.log(eatenProducts);
+  // console.log(currentDateId);
+
+  const { toggle } = useModal();
   const handleDelete = (e) => {
-    // dispatch(deleteProductOperation({productId: dayId}))
-  } 
+    dispatch(
+      deleteProductOperation({
+        dayId: currentDateId,
+        eatenProductId: e.target.id,
+      })
+    );
+  };
 
   return (
     <>
       <ul className={styles.diaryProductList}>
-      {eatenProducts?.map(item => 
-        <li key={item.id} className={styles.diaryProductListItem}>
-        <p className={styles.diaryProductListName}>{item.title}</p>
-        <p className={styles.diaryProductListWeight}>{item.weight}</p>
-        <p className={styles.diaryProductListCcal}>{item.kcal}</p>
-        <button id={item.id} className={styles.diaryProductListButton} onClick={handleDelete}>X</button>
-      </li>
-        )}
+        {eatenProducts?.map((item) => (
+          <li key={item.id} className={styles.diaryProductListItem}>
+            <p className={styles.diaryProductListName}>{item.title}</p>
+            <p className={styles.diaryProductListWeight}>{item.weight}</p>
+            <p className={styles.diaryProductListCcal}>{item.kcal}</p>
+            <button
+              id={item.id}
+              className={styles.diaryProductListButton}
+              onClick={handleDelete}
+            >
+              X
+            </button>
+          </li>
+        ))}
       </ul>
       {size.width < 768 ? (
         <button

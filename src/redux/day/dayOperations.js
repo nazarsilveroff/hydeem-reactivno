@@ -15,4 +15,3 @@ export const getSummaryForDayOperation = () => async (dispatch, getState) => {
     dispatch(getInfoForDay(data));
   } catch (error) {}
 };
-

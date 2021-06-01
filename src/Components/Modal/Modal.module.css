@@ -82,6 +82,16 @@
   overflow-y: scroll;
 }
 
+.forbiddenProductsContainer::-webkit-scrollbar {
+  background: #9b9faa40;
+}
+
+.forbiddenProductsContainer::-webkit-scrollbar-thumb {
+  background-color: #264061;
+  border-radius: 4px;
+  height: 26px;
+}
+
 .forbiddenProductsItems {
   font-size: 14px;
   line-height: 17px;
@@ -154,7 +164,7 @@
     box-shadow: 0px 22px 40px rgba(0, 0, 0, 0.1);
     padding: 64px 42px 68px 42px;
     animation: fade-in 1s 1 linear;
-    animation-fill-mode: forwards;
+    animation-fill-mode: forwards; 
     opacity: 0;
   }
 
