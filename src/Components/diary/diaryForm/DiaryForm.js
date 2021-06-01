@@ -7,6 +7,7 @@ import { getSearchProductOperation } from "../../../redux/product/productOperati
 import { debounce } from "debounce";
 import { getSearchProductsSelector } from "../../../redux/product/productSelectors";
 import { getLocalDaySelector } from "../../../redux/day/daySelectors";
+import { addEatenProductOperation } from "../../../redux/product/productOperations";
 
 const initialState = {
   selected: true,
@@ -26,6 +27,8 @@ const DiaryForm = () => {
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addEatenProductOperation({date: state.date, productId: state.id, weight: state.weight}))
+    document.querySelector('input[name=search]').value = ""
   };
 
   const onHandleChange = (e) => {
@@ -47,13 +50,13 @@ const DiaryForm = () => {
   };
 
   const handleProduct = (e) => {
-    console.log(`${e.target.textContent}:`, e.target.id);
     setState((prevState) => ({
       ...prevState,
       selected: !prevState.selected,
       product: e.target.textContent,
       id: e.target.id,
     }));
+    document.querySelector('input[name=search]').value = e.target.textContent
   };
 
   let size = useWindowSize();
@@ -67,6 +70,7 @@ const DiaryForm = () => {
           type="text"
           placeholder="Введите название продукта"
           autoComplete="off"
+          required
         />
         <ul className={styles.productResultList} id="products">
           {products.map(
@@ -89,6 +93,7 @@ const DiaryForm = () => {
           className={styles.diaryInput}
           type="number"
           placeholder="Граммы"
+          required
         />
         <button
           type="submit"
