@@ -1,6 +1,6 @@
 import {
   configureStore,
-  getDefaultMiddleware
+  getDefaultMiddleware,
   // getDefaultMiddleware,
 } from "@reduxjs/toolkit";
 import { authReducers } from "./auth/authReducers";
@@ -8,7 +8,14 @@ import { authReducers } from "./auth/authReducers";
 import { persistReducer, persistStore } from "redux-persist";
 
 import storage from "redux-persist/lib/storage";
-import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
+import {
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import { userReducers } from "./user/userReducers";
 import { getInfoForDayReducer, getLocalDayReducer } from "./day/dayReducers";
 import { getSearchProductReducer } from "./product/productReducers";
@@ -26,7 +33,7 @@ const persistedReducer = persistReducer(
   {
     key: "authorization",
     storage,
-    whitelist: ["tokens"]
+    whitelist: ["tokens"],
   },
   authReducers
 );
@@ -34,22 +41,22 @@ const persistedReducer = persistReducer(
 const middleware = [
   ...getDefaultMiddleware({
     serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-    }
-  })
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
 ];
 
 export const store = configureStore({
   reducer: {
     authorization: persistedReducer,
     user: userReducers,
-    localDay: getLocalDayReducer,
+    selectedDate: getLocalDayReducer,
     infoForDay: getInfoForDayReducer,
     searchedProducts: getSearchProductReducer,
     dailyRate: getDailyRateReducer,
-    openModal: openModalReducer
+    openModal: openModalReducer,
   },
-  middleware: middleware
+  middleware: middleware,
 });
 
 export const persistor = persistStore(store);
