@@ -1,9 +1,10 @@
-
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useModal from "../Components/Modal/ModalHook/useModal";
 import { authorizationSelector } from "../redux/auth/authSelectors";
+
 import cssStyles from "classnames";
+
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
 
@@ -163,6 +164,3 @@ const Calculate = () => {
 };
 
 export default Calculate;
-
-              
-                  
