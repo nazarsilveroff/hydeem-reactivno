@@ -4,14 +4,16 @@ import { getInfoForDay, getLocalDay } from "./dayActions";
 const baseUrl = new BaseHttpService();
 
 export const getSummaryForDayOperation = () => async (dispatch, getState) => {
-  const dateFormat = require("dateformat");
-  const now = new Date();
-  const date = dateFormat(now, "isoDate");
+  // const dateFormat = require("dateformat");
+  // const now = new Date();
+  // const date = dateFormat(now, "isoDate");
 
-  dispatch(getLocalDay(date));
+  // dispatch(getLocalDay(date));
 
   try {
-    const { data } = await baseUrl.getSummaryForDayData(getState().localDay);
+    const { data } = await baseUrl.getSummaryForDayData(
+      getState().selectedDate
+    );
     dispatch(getInfoForDay(data));
   } catch (error) {}
 };

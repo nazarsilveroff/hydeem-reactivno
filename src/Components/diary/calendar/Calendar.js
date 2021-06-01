@@ -6,6 +6,7 @@ import styles from "../calendar/Calendar.module.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import { useDispatch } from "react-redux";
 import { getLocalDay } from "../../../redux/day/dayActions";
+import { getSummaryForDayOperation } from "../../../redux/day/dayOperations";
 
 const Calendar = () => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const Calendar = () => {
   const selectDate = dateFormat(startDate, "isoDate");
   useEffect(() => {
     dispatch(getLocalDay(selectDate));
+    dispatch(getSummaryForDayOperation());
   }, [dispatch, startDate, selectDate]);
 
   return (
