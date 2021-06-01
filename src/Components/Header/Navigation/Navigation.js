@@ -47,7 +47,7 @@ const Navigation = () => {
                   ))}
                 </ul>
               )}
-              {size.width <= 1280 && (
+              {size.width < 1280 && (
                 <>
                   {size.width > 768 && size.width <= 1280 ? <UserBar /> : null}
 
@@ -63,16 +63,18 @@ const Navigation = () => {
         </div>
       )}
       {!authToken && (
-        <nav className={style.navContainer}>
-          <div className={style.linkWrapper}>
-            <NavLink className={style.imageLink} to="/"></NavLink>
-            <ul className={style.navList}>
-              {mainRoutes.map((item) => (
-                <NavItems item={item} key={item.path} authToken={authToken} />
-              ))}
-            </ul>
-          </div>
-        </nav>
+        <div className={style.borderBotom}>
+          <nav className={style.navContainer}>
+            <div className={style.linkWrapper}>
+              <NavLink className={style.imageLink} to="/"></NavLink>
+              <ul className={style.navList}>
+                {mainRoutes.map((item) => (
+                  <NavItems item={item} key={item.path} authToken={authToken} />
+                ))}
+              </ul>
+            </div>
+          </nav>
+        </div>
       )}
       {error && <h3 className={style.error}>{error}</h3>}
     </>

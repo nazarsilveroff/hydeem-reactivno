@@ -1,0 +1,15 @@
+@media screen and (min-width: 768px) {
+  .container {
+    min-height: 100vh;
+    /* min-width: 100vw; */
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+
+    height: 100vh;
+  }
+}

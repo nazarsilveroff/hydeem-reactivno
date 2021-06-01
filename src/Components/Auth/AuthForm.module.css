@@ -6,12 +6,13 @@
   line-height: 0.93;
   letter-spacing: 0.04em;  
   position: relative;
+  width: 100vw;
+  height: 100vh;
 }
 .AuthFormContainer{ 
   display: none;
   margin: 0 auto;
-width: inherit;
-  height: 100vh;
+
   
 }
   .navContainer{
@@ -24,9 +25,9 @@ width: inherit;
   flex-direction: column;
     }
   .authTitle {
-font-family: Gotham Pro;
+font-family: "GothamPro-Bold";
 font-style: normal;
-font-weight: bold;
+font-weight: 700;
 font-size: 14px;
 line-height: 0.92em;
 letter-spacing: 0.04em;
@@ -105,7 +106,7 @@ color: #FC842D;
       width: 768px;
     padding-left: 92px;
     align-items: flex-start;
-    padding-top: 191px;
+    padding-top: 271px;
    ;
   }
 }
@@ -124,7 +125,7 @@ color: #FC842D;
   .navContainer{
     width: 1280px;
     padding:115px;
-    padding-top: 213px;
+    padding-top: 362px;
  
   }
 }

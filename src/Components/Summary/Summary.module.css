@@ -76,7 +76,7 @@
   .meny {
     width: 270px;
     padding-top: 91px;
-    /* background-image: url("../../assets/images/tablet/leaves-sidebar-tablet-x1-min.png"); */
+    background-image: url(../../img/rightSideBarBottom@1x.png);
   }
   .menutext {
     margin-bottom: 0px;
@@ -93,15 +93,17 @@
 }
 
 @media screen and (min-width: 1280px) {
-  /* .container {
+  .container {
     width: 535px;
     padding: 141px 0 162px 90px;
     display: block;
-    background-image: url("../../assets/images/desktop/leaves-sidebar-desktop-x1-v2-min.png");
-    background-position: 0px -135px;
-    margin-left: auto;
-  } */
-  /* .summary {
+    background-image: url(../../img/rightSideBar@1x.png);
+    background-repeat: no-repeat;
+    background-position: 30px -135px;
+    /* margin-left: auto; */
+    margin: unset;
+  }
+  .summary {
     padding-top: 0;
     margin-bottom: 60px;
     height: 168px;
@@ -111,6 +113,6 @@
     height: 168px;
   }
   .title {
-    margin: 0 0 25px; */
-  /* } */
+    margin: 0 0 25px;
+  }
 }
