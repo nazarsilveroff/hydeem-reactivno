@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getInfoForDaySelector } from "../../../redux/day/daySelectors";
 
-import { deleteProductOperation } from "../../../redux/product/productOperations";
+import { deleteProductOperation } from "../../../redux/day/dayOperations";
 
 import useModal from "../../Modal/ModalHook/useModal";
 import useWindowSize from "../diaryHook/UseDiary";
@@ -11,14 +11,9 @@ import styles from "../diaryProductList/DiaryProductList.module.css";
 const DiaryProductList = () => {
   let size = useWindowSize();
   const dispatch = useDispatch();
-  const infoForDay = useSelector(getInfoForDaySelector);
-  const currentDateId = infoForDay.id;
-  // const [eatenProducts, setEatenProducts] = useState([]);
-  const products = infoForDay?.eatenProducts;
-
-  // useEffect(() => {
-  //   setEatenProducts(products);
-  // }, [products]);
+  const { eatenProducts, id: currentDateId } = useSelector(
+    getInfoForDaySelector
+  );
 
   const handleDelete = (e) => {
     dispatch(
@@ -27,9 +22,6 @@ const DiaryProductList = () => {
         eatenProductId: e.target.id,
       })
     );
-    // setEatenProducts((prevProducts) =>
-    //   prevProducts.filter((product) => product.id === e.target.id)
-    // );
   };
 
   const { toggle } = useModal();
@@ -37,7 +29,7 @@ const DiaryProductList = () => {
   return (
     <>
       <ul className={styles.diaryProductList}>
-        {products?.map((item) => (
+        {eatenProducts?.map((item) => (
           <li key={item.id} className={styles.diaryProductListItem}>
             <p className={styles.diaryProductListName}>{item.title}</p>
             <p className={styles.diaryProductListWeight}>{item.weight}</p>

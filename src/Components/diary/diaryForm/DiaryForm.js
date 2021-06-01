@@ -7,7 +7,7 @@ import { getSearchProductOperation } from "../../../redux/product/productOperati
 import { debounce } from "debounce";
 import { getSearchProductsSelector } from "../../../redux/product/productSelectors";
 import { getLocalDaySelector } from "../../../redux/day/daySelectors";
-import { addEatenProductOperation } from "../../../redux/product/productOperations";
+import { addEatenProductOperation } from "../../../redux/day/dayOperations";
 
 const initialState = {
   selected: true,

@@ -1,47 +1,63 @@
 import React from "react";
+import style from "./Summary.module.css";
 import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { authorizationSelector } from "../../redux/auth/authSelectors";
 import {
   getAllProdSelector,
-  // getDaylyRateSelector,
   getSummariesSelector,
 } from "../../redux/daily-rate/dailySelectors";
-import // getInfoForDaySelector,
-// getLocalDaySelector,
-"../../redux/day/daySelectors";
-import { getLocalDaySelector } from "../../redux/day/daySelectors";
-import { userInfoForDay } from "../../redux/user/userSelectors";
-import style from "./Summary.module.css";
+
+import {
+  getLocalDaySelector,
+  getSummariesForDay,
+} from "../../redux/day/daySelectors";
 
 const Summary = () => {
   const { pathname } = useLocation();
-  // console.log(pathname);
-  // const dailyRate = useSelector(getDaylyRateSelector);
-  const summaries = useSelector(getSummariesSelector);
-  const notAllProd = useSelector(getAllProdSelector);
-  const infoForDay = useSelector(userInfoForDay);
-  // console.log(pathname === "/diary" ? summaries : );
-  const notAllProdSlice = notAllProd?.slice(0, 3);
-  // const { date } = useSelector(getLocalDaySelector);
-  // const toDayDate = new Date().toLocaleDateString();
-  // console.log(toDayDate);
-  // const infoForDay = useSelector(getInfoForDaySelector);
   const authorization = useSelector(authorizationSelector);
+  // const summariesDalyRate = useSelector(getSummariesSelector);
+  // const selectedDate = useSelector(getLocalDaySelector);
+  // console.log("summariesDalyRate for CALCULATOR", summariesDalyRate);
+
+  // const daySummary = useSelector(getSummariesForDay);
+  // console.log("daySummary for DIARY", daySummary);
+
+  // const notAllProd = useSelector(getAllProdSelector);
+  // const notAllProdSlice = notAllProd?.slice(0, 3);
+
   // const { date, kcalLeft, kcalConsumed, percentsOfDailyRate } = summaries;
   // const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = infoForDay;
+
+  // const getDataSelectedDate = () => {
+  //   const values = {};
+  //   for (const char of Object.keys(daySummary)) {
+  //     values[char] = daySummary[char];
+  //   }
+  //   return values;
+  // };
+  // console.log(getDataSelectedDate());
+
+  const dateFormat = require("dateformat");
+  const now = new Date();
+  const todayDate = dateFormat(now, "isoDate");
 
   // const getData = () => {
   //   // console.log(new Date(item.date));
   //   // console.log(new Date("2021-05-27"));
-  //   return summaries
-  //     ? summaries.find((item) => {
-  //         console.log(Date.now(item.date));
-  //         console.log(Date.now("2021-05-27"));
-  //         return Date.now(item.date) === Date.now(date);
+  //   return pathname === "/diary"
+  //     ? daySummary?.find((item) => {
+  //         // console.log(Date.now(item.date));
+  //         // console.log(Date.now("2021-05-27"));
+  //         return Date.now(item.date) === todayDate;
   //       })
-  //     : null;
+  //     : summariesDalyRate?.find((item) => {
+  //         // console.log(Date.now(item.date));
+  //         // console.log(Date.now("2021-05-27"));
+  //         return Date.now(item.date) === todayDate;
+  //       });
   // };
+  // console.log(getData());
 
   return authorization ? (
     <>
@@ -70,7 +86,7 @@ const Summary = () => {
           <div className={style.products}>
             <ul className={style.defaultText}>
               {/* {notAllProdSlice
-                ? .map((item) => <li key={item}>{item}</li>)
+                ? notAllProdSlice.map((item) => <li key={item}>{item}</li>)
                 : "Здесь будет отображаться, что кушать запрещено!"} */}
             </ul>
           </div>
