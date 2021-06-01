@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocalDaySelector } from "../../../redux/day/daySelectors";
-// import { deleteProductSuccess } from "../../../redux/product/productActions";
+import { getInfoForDaySelector } from "../../../redux/day/daySelectors";
+
 import { deleteProductOperation } from "../../../redux/product/productOperations";
-// import { getInfoForDaySelector } from "../../../redux/day/daySelectors";
-import { userInfoForDay } from "../../../redux/user/userSelectors";
+
 import useModal from "../../Modal/ModalHook/useModal";
 import useWindowSize from "../diaryHook/UseDiary";
 import styles from "../diaryProductList/DiaryProductList.module.css";
@@ -12,22 +11,15 @@ import styles from "../diaryProductList/DiaryProductList.module.css";
 const DiaryProductList = () => {
   let size = useWindowSize();
   const dispatch = useDispatch();
-  const infoForDay = useSelector(userInfoForDay);
-  const selectedDate = useSelector(getLocalDaySelector);
+  const infoForDay = useSelector(getInfoForDaySelector);
+  const currentDateId = infoForDay.id;
+  // const [eatenProducts, setEatenProducts] = useState([]);
+  const products = infoForDay?.eatenProducts;
 
-  const currentDate = infoForDay?.filter(
-    (day) => day.date === selectedDate.date
-  );
+  // useEffect(() => {
+  //   setEatenProducts(products);
+  // }, [products]);
 
-  const eatenProducts = currentDate[0]?.eatenProducts;
-
-  const currentDateId = currentDate[0]?._id;
-
-  // console.log(currentDate);
-  // // console.log(eatenProducts);
-  // console.log(currentDateId);
-
-  const { toggle } = useModal();
   const handleDelete = (e) => {
     dispatch(
       deleteProductOperation({
@@ -35,12 +27,17 @@ const DiaryProductList = () => {
         eatenProductId: e.target.id,
       })
     );
+    // setEatenProducts((prevProducts) =>
+    //   prevProducts.filter((product) => product.id === e.target.id)
+    // );
   };
+
+  const { toggle } = useModal();
 
   return (
     <>
       <ul className={styles.diaryProductList}>
-        {eatenProducts?.map((item) => (
+        {products?.map((item) => (
           <li key={item.id} className={styles.diaryProductListItem}>
             <p className={styles.diaryProductListName}>{item.title}</p>
             <p className={styles.diaryProductListWeight}>{item.weight}</p>

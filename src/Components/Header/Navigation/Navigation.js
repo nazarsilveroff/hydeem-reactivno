@@ -49,7 +49,7 @@ const Navigation = () => {
               )}
               {size.width < 1280 && (
                 <>
-                  {size.width > 768 && size.width <= 1280 ? <UserBar /> : null}
+                  {size.width >= 768 && size.width <= 1280 ? <UserBar /> : null}
 
                   <BurgerModal
                     hendleToglBurger={hendleToglBurger}
