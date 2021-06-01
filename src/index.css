@@ -88,15 +88,15 @@ p {
 ::-webkit-scrollbar {
   width: 7px;
   border-radius: 4px;
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: black;
-  border-radius: 4px;
-  height: 15px;
+  background: #9b9faa40;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #fc842d;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #264061;
+  border-radius: 4px;
+  height: 26px;
 }

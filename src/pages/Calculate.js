@@ -1,7 +1,7 @@
-
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import useModal from "../Components/Modal/ModalHook/useModal";
+import { authorizationSelector } from "../redux/auth/authSelectors";
 
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
@@ -14,6 +14,7 @@ const initialState = {
   bloodType: " "
 };
 const Calculate = () => {
+  const authorization = useSelector(authorizationSelector);
   const { toggle } = useModal();
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Calculate = () => {
   const handleFormSubmit = e => {
     e.preventDefault();
     dispatch(getDailyRateOperation(state));
+    !authorization && toggle();
   };
   return (
     <>
@@ -144,6 +146,3 @@ const Calculate = () => {
 };
 
 export default Calculate;
-
-              
-                  

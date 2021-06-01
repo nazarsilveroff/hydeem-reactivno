@@ -1,5 +1,4 @@
-import { Field, Form, Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -15,6 +14,15 @@ const Modal = () => {
   const notAllowedProductsList = useSelector(getAllProdSelector);
   const authorization = useSelector(authorizationSelector);
   const { isOpen, toggle } = useModal();
+  const [search, setSearch] = useState("");
+
+  const onHandleChange = event => {
+    setSearch(event.target.value);
+  };
+
+  const filteredNotAllowedProducts = () => {
+    return notAllowedProductsList?.slice(0, 20).filter(filteredProduct => filteredProduct.toLowerCase().includes(search));
+  };
 
   return (
     !authorization &&
@@ -23,25 +31,31 @@ const Modal = () => {
         <div className={styles.modalOverlay}>
           <div className={styles.modalWindow}>
             <button className={styles.closeModalBtn} onClick={toggle} />
-            <h2 className={styles.dailyCaloryIntakeTitle}>Ваша рекомендуемая суточная норма калорий составляет</h2>
-            <div className={styles.dailyCaloryIntakeContainer}>
-              <div className={styles.dailyCaloryIntakeResultContainer}>
-                <span className={styles.dailyCaloryIntakeNumber}>{dailyRateCalorie} </span>
-                <span className={styles.dailyCaloryIntakeKcal}>ккал</span>
+            <h2 className={styles.dailyCalorieIntakeTitle}>Ваша рекомендуемая суточная норма калорий составляет</h2>
+            <div className={styles.dailyCalorieIntakeContainer}>
+              <div className={styles.dailyCalorieIntakeResultContainer}>
+                <span className={styles.dailyCalorieIntakeNumber}>{dailyRateCalorie} </span>
+                <span className={styles.dailyCalorieIntakeKcal}>ккал</span>
               </div>
-              <p className={styles.forbiddenProductsTtile}>Продукты, которые вам не рекомендуется употреблять</p>
+              <p className={styles.forbiddenProductsTitle}>Продукты, которые вам не рекомендуется употреблять</p>
 
-              <Formik>
-                <Form method="POST" action="#" className={styles.forbiddenProductsSearch}>
-                  <Field className={styles.forbiddenProductsInput} />
-                  <span className={styles.findForbiddenProductsIcon} />
-                </Form>
-              </Formik>
+              <div className={styles.forbiddenProductsSearch}>
+                <input className={styles.forbiddenProductsInput} value={search} onChange={onHandleChange} />
+                <span className={styles.findForbiddenProductsIcon} />
+              </div>
 
               <div className={styles.forbiddenProductsContainer}>
-                <ul className={styles.forbiddenProductsList}>
-                  <li className={styles.forbiddenProductsItems}>{notAllowedProductsList}</li>
-                </ul>
+                {filteredNotAllowedProducts()?.length ? (
+                  <ol className={styles.forbiddenProductsList}>
+                    {filteredNotAllowedProducts()?.map(product => (
+                      <li className={styles.forbiddenProductsItems} key={product}>
+                        {product}
+                      </li>
+                    ))}
+                  </ol>
+                ) : (
+                  <span className={styles.noResultMessage}>Нет результата на данный поиск</span>
+                )}
               </div>
               <Link type="button" to="/login" className={styles.startGettingSlimButton} onClick={toggle}>
                 Начать худеть

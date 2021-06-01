@@ -19,7 +19,7 @@
   top: 80px;
 }
 
-.dailyCaloryIntakeResultContainer {
+.dailyCalorieIntakeResultContainer {
   border-bottom: 1px solid #e0e0e0;
   width: 290px;
   height: 6px;
@@ -31,13 +31,13 @@
   justify-content: center;
 }
 
-.dailyCaloryIntakeTitle {
+.dailyCalorieIntakeTitle {
   font-family: Verdana-Bold;
   font-size: 18px;
   line-height: 26px;
 }
 
-.dailyCaloryIntakeNumber {
+.dailyCalorieIntakeNumber {
   font-family: Verdana-Bold;
   font-size: 48px;
   text-align: center;
@@ -45,7 +45,7 @@
   color: #264061;
   line-height: 58px;
 }
-.dailyCaloryIntakeKcal {
+.dailyCalorieIntakeKcal {
   font-family: Verdana-Bold;
   font-size: 16px;
   color: #264061;
@@ -55,19 +55,25 @@
   align-items: center;
 }
 
-.forbiddenProductsTtile,
-.forbiddenProductsItems {
+.forbiddenProductsTitle,
+.forbiddenProductsItems,
+.noResultMessage {
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.04em;
   font-family: Verdana;
 }
 
-.forbiddenProductsTtile {
+.noResultMessage {
+  color: #264061;
+}
+
+.forbiddenProductsTitle {
   font-family: Verdana-Bold;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .forbiddenProductsContainer {
   margin-top: 14px;
   height: 100px;
@@ -75,14 +81,8 @@
   margin-bottom: 40px;
   overflow-y: scroll;
 }
-.forbiddenProductsContainer ::-webkit-scrollbar {
-  display: block;
-  height: 2px;
-  background-color: #264061;
-}
 
 .forbiddenProductsItems {
-  list-style-type: none;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: 0.04em;
@@ -90,10 +90,8 @@
   font-style: normal;
   font-weight: 400;
   color: #9b9faa;
-}
-
-.forbiddenProductsList {
-  padding: 0;
+  padding-left: 10px;
+  margin-bottom: 5px;
 }
 
 .startGettingSlimButton {
@@ -160,7 +158,11 @@
     opacity: 0;
   }
 
-  .dailyCaloryIntakeTitle {
+  .forbiddenProductsContainer {
+    width: 330px;
+  }
+
+  .dailyCalorieIntakeTitle {
     display: block;
     width: 509px;
     height: 70px;
@@ -169,17 +171,17 @@
     text-align: center;
   }
 
-  .dailyCaloryIntakeResultContainer {
+  .dailyCalorieIntakeResultContainer {
     margin: 0 auto;
     width: 330px;
     margin-top: 16px;
   }
 
-  .forbiddenProductsTtile {
+  .forbiddenProductsTitle {
     margin-top: 12px;
   }
 
-  .dailyCaloryIntakeContainer {
+  .dailyCalorieIntakeContainer {
     padding-left: 83px;
     padding-right: 83px;
   }
@@ -188,7 +190,7 @@
     width: 330px;
   }
 
-  .forbiddenProductsTtile {
+  .forbiddenProductsTitle {
     margin-bottom: 20px;
   }
 
