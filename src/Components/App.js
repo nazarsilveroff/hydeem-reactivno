@@ -7,6 +7,8 @@ import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Modal from "./Modal/Modal";
 import { getLocalDaySelector } from "../redux/day/daySelectors";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const user = useSelector((state) => state.user.userInfo.id);
@@ -29,6 +31,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer />
       <Header />
       <Main />
       <Modal />
