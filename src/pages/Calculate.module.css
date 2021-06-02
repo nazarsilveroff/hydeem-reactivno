@@ -1,15 +1,21 @@
 .container {
   width: 320px;
   margin: 0 auto;
-  padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .container__active {
   width: 320px;
   margin: 0 auto;
-  padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .title {
-  margin-bottom: 40px;
+  margin-bottom: 60px;
   font-family: Verdana;
   font-style: normal;
   font-weight: 700;
@@ -19,6 +25,7 @@
 }
 .form {
   width: 240px;
+  margin-right: 0;
 }
 .inputWrapper {
   margin-bottom: 40px;
@@ -68,7 +75,10 @@ input:invalid {
 }
 .button {
   padding: 13px 0;
-  display: block;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-left: 50px;
   width: 176px;
   border: 2px solid #fc842d;
   border-radius: 30px;
@@ -81,8 +91,6 @@ input:invalid {
   text-align: center;
   letter-spacing: 0.04em;
   outline: none;
-  margin: 0 auto;
-  margin-bottom: 40px;
 }
 
 .button:hover {
@@ -178,7 +186,6 @@ input[type="number"] {
 
 @media screen and (min-width: 768px) {
   .container__active {
-    box-sizing: content-box;
     width: 100%;
     margin-left: 86px;
     margin-right: 74px;
@@ -188,12 +195,12 @@ input[type="number"] {
     background-repeat: no-repeat;
     background-position: top 100% right -244px, top 323px right 57px,
       bottom -84px left -325px, 100% 100%;
-
-    min-height: 1024px;
+    height: 100vh;
   }
   .container {
     width: 605px;
     margin-top: 100px;
+    padding: 0 0 73px 0;
   }
   .title {
     font-size: 30px;
@@ -217,20 +224,23 @@ input[type="number"] {
   .button {
     margin: 0;
   }
+  .form {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .container__active {
-    box-sizing: content-box;
+    margin: auto auto 111px 115px;
 
-    margin: auto auto 100px 115px;
-    padding-top: 144px;
+    padding: 294px 0 0 0;
     background-image: url(../img/banana@2x.png), url(../img/strawberry@2x.png),
       url(../img/leaves-login-tablet@2x.png), url(../img/spot.png);
     background-repeat: no-repeat;
-    background-position: 127% -73%, bottom 62% right 90px, top -186px left 38%,
-      93% -73%;
-    background-size: 1000px, 500px, 700px, 700px;
+    background-position: top -200px left 600px, bottom 1px right 80px,
+      top -1px right 55%, top 20% right 0;
+    background-size: 900px, 500px, 700px, 700px;
   }
   .container {
     margin-left: 115px;
