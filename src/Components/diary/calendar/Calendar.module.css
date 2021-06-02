@@ -5,6 +5,10 @@
     margin-top: 40px;
     margin-bottom: 30px;
 }
+.flexCalendar img{
+    height: 18px;
+    width: 20px;
+}
 .datePicker {
     font-family: Verdana;
     font-style: normal;

@@ -1,3 +1,9 @@
+.emptyDiary{
+    font-family: Verdana;
+    text-shadow: 12px 9px 20px black;
+    font-weight: bold;
+    font-size: 30px;
+}
 .diaryProductList {
     height: 210px;
     list-style: none;
@@ -52,7 +58,7 @@ color: #212121;
 }
 
 .diaryProductListCcal {
-    width: 60px;
+    width: 80px;
     height: 26px;
     border: none;
     border-bottom: 1px solid #e0e0e0;
