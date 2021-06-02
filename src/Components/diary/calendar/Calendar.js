@@ -19,12 +19,12 @@ const Calendar = () => {
   }, [dispatch, startDate, selectDate]);
 
   return (
-    <DatePicker
-      className={styles.datePicker}
-      selected={startDate}
-      dateFormat="dd.MM.yyyy"
-      onChange={(date) => setStartDate(date)}
-    />
+        <DatePicker
+            className={styles.datePicker}
+            selected={startDate}
+            dateFormat="dd.MM.yyyy"
+            onChange={(date) => setStartDate(date)}
+        />
   );
 };
 
