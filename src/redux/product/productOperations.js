@@ -1,7 +1,5 @@
 import BaseHttpService from "../../services/api";
-import {
-  getSearchProductSuccess,
-} from './productActions';
+import { getSearchProductSuccess } from "./productActions";
 
 const baseURL = new BaseHttpService();
 
@@ -14,17 +12,3 @@ export const getSearchProductOperation =
       console.log(error);
     }
   };
-//
-// export const addEatenProductOperation = (value) => async (dispatch) => {
-//   try {
-//     const { data } = await baseURL.addEatenProduct(value);
-//     dispatch(addProductAction(data));
-//   } catch (error) {}
-// };
-//
-// export const deleteProductOperation = ({ eatenProductId, dayId }) => async (dispatch) => {
-//   try {
-//     await baseURL.delleteEatenProduct({ eatenProductId, dayId });
-//     dispatch(deleteProductAction(eatenProductId));
-//   } catch (error) {}
-// };

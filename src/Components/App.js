@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLocalDay } from "../redux/day/dayActions";
+import { getLocalDay, getSelectedDay } from "../redux/day/dayActions";
 import { getSummaryForDayOperation } from "../redux/day/dayOperations";
 import { getUserOperation } from "../redux/user/userOperations";
 import Header from "./Header/Header";
@@ -15,17 +15,17 @@ function App() {
 
   const dispatch = useDispatch();
 
-  // const dateFormat = require("dateformat");
-  // const now = new Date();
-  // const date = dateFormat(now, "isoDate");
+  const dateFormat = require("dateformat");
+  const now = new Date();
+  const toDay = dateFormat(now, "isoDate");
 
   useEffect(() => {
     !user &&
       token &&
       dispatch(getUserOperation()) &&
-      // dispatch(getLocalDay(selectedDay)) &&
+      dispatch(getSelectedDay(toDay)) &&
       dispatch(getSummaryForDayOperation());
-  }, [selectedDay, user, token, dispatch]);
+  }, [toDay, user, token, dispatch]);
 
   return (
     <>

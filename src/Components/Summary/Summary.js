@@ -1,69 +1,29 @@
 import React from "react";
 import style from "./Summary.module.css";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router";
 import { authorizationSelector } from "../../redux/auth/authSelectors";
-import {
-  getAllProdSelector,
-  getSummariesSelector,
-} from "../../redux/daily-rate/dailySelectors";
 
 import {
-  getLocalDaySelector,
-  getSummariesForDay,
+  getDaySummarySelector,
+  getInfoForDaySelector,
+  getSelectedDayString,
 } from "../../redux/day/daySelectors";
+import { userNotAllProd } from "../../redux/user/userSelectors";
 
 const Summary = () => {
-  const { pathname } = useLocation();
   const authorization = useSelector(authorizationSelector);
-  // const summariesDalyRate = useSelector(getSummariesSelector);
-  // const selectedDate = useSelector(getLocalDaySelector);
-  // console.log("summariesDalyRate for CALCULATOR", summariesDalyRate);
-
-  // const daySummary = useSelector(getSummariesForDay);
-  // console.log("daySummary for DIARY", daySummary);
-
-  // const notAllProd = useSelector(getAllProdSelector);
-  // const notAllProdSlice = notAllProd?.slice(0, 3);
-
-  // const { date, kcalLeft, kcalConsumed, percentsOfDailyRate } = summaries;
-  // const { kcalLeft, kcalConsumed, dailyRate, percentsOfDailyRate } = infoForDay;
-
-  // const getDataSelectedDate = () => {
-  //   const values = {};
-  //   for (const char of Object.keys(daySummary)) {
-  //     values[char] = daySummary[char];
-  //   }
-  //   return values;
-  // };
-  // console.log(getDataSelectedDate());
-
-  const dateFormat = require("dateformat");
-  const now = new Date();
-  const todayDate = dateFormat(now, "isoDate");
-
-  // const getData = () => {
-  //   // console.log(new Date(item.date));
-  //   // console.log(new Date("2021-05-27"));
-  //   return pathname === "/diary"
-  //     ? daySummary?.find((item) => {
-  //         // console.log(Date.now(item.date));
-  //         // console.log(Date.now("2021-05-27"));
-  //         return Date.now(item.date) === todayDate;
-  //       })
-  //     : summariesDalyRate?.find((item) => {
-  //         // console.log(Date.now(item.date));
-  //         // console.log(Date.now("2021-05-27"));
-  //         return Date.now(item.date) === todayDate;
-  //       });
-  // };
-  // console.log(getData());
+  const selectedDay = useSelector(getSelectedDayString);
+  const defaultInfo = useSelector(getInfoForDaySelector);
+  const daySummary = useSelector(getDaySummarySelector);
+  const notAllProd = useSelector(userNotAllProd);
 
   return authorization ? (
     <>
       <div className={style.container}>
         <div className={style.summary}>
-          <h2 className={style.title}>Сводка за {}</h2>
+          <h2 className={style.title}>
+            Сводка за {daySummary?.date || selectedDay}
+          </h2>
           <div className={style.statistics}>
             <ul className={style.listName}>
               <li className={style.text}>Осталось</li>
@@ -72,11 +32,15 @@ const Summary = () => {
               <li className={style.text}>n% от нормы</li>
             </ul>
             <ul className={style.list}>
-              <li className={style.text}>{}</li>
-              <li className={style.text}>{}</li>
-              <li className={style.text}>{}</li>
               <li className={style.text}>
-                {/* {Math.round(percentsOfDailyRate) || 0} */}
+                {defaultInfo?.kcalLeft || daySummary?.kcalLeft || 0}
+              </li>
+              <li className={style.text}>{daySummary?.kcalConsumed || 0}</li>
+              <li className={style.text}>
+                {defaultInfo?.dailyRate || daySummary?.dailyRate || 0}
+              </li>
+              <li className={style.text}>
+                {Math.round(daySummary?.percentsOfDailyRate) || 0}
               </li>
             </ul>
           </div>
@@ -85,9 +49,11 @@ const Summary = () => {
           <h2 className={style.title}>Нерекомендуемые продукты</h2>
           <div className={style.products}>
             <ul className={style.defaultText}>
-              {/* {notAllProdSlice
-                ? notAllProdSlice.map((item) => <li key={item}>{item}</li>)
-                : "Здесь будет отображаться, что кушать запрещено!"} */}
+              {notAllProd?.length > 0
+                ? notAllProd
+                    ?.slice(0, 3)
+                    .map((item) => <li key={item}>{item}</li>)
+                : "Здесь будет отображаться, что кушать запрещено!"}
             </ul>
           </div>
         </div>
