@@ -17,7 +17,12 @@ import {
   REGISTER,
 } from "redux-persist";
 import { userReducers } from "./user/userReducers";
-import { getInfoForDayReducer, getSelectedDayReducer } from "./day/dayReducers";
+import {
+  daySummary,
+  eatenProducts,
+  getInfoForDayReducer,
+  getSelectedDayReducer,
+} from "./day/dayReducers";
 import { getSearchProductReducer } from "./product/productReducers";
 import { getDailyRateReducer } from "./daily-rate/dailyReducers";
 import { openModalReducer } from "./modal/modalReducers";
@@ -48,6 +53,8 @@ const middleware = [
 
 export const store = configureStore({
   reducer: {
+    daySummary: daySummary,
+    eatenProducts: eatenProducts,
     authorization: persistedReducer,
     user: userReducers,
     selectedDate: getSelectedDayReducer,

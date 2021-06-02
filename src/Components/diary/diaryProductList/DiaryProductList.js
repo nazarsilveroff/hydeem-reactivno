@@ -1,6 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoForDaySelector } from "../../../redux/day/daySelectors";
+import {
+  getDayId,
+  getEatenProducts,
+  getInfoForDaySelector,
+} from "../../../redux/day/daySelectors";
 
 import { deleteProductOperation } from "../../../redux/day/dayOperations";
 
@@ -11,14 +15,13 @@ import styles from "../diaryProductList/DiaryProductList.module.css";
 const DiaryProductList = () => {
   let size = useWindowSize();
   const dispatch = useDispatch();
-  const { eatenProducts, id: currentDateId } = useSelector(
-    getInfoForDaySelector
-  );
+  const eatenProducts = useSelector(getEatenProducts);
+  const id = useSelector(getDayId);
 
   const handleDelete = (e) => {
     dispatch(
       deleteProductOperation({
-        dayId: currentDateId,
+        dayId: id,
         eatenProductId: e.target.id,
       })
     );
