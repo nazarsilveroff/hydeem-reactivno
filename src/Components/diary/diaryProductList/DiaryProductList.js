@@ -39,7 +39,7 @@ const DiaryProductList = () => {
               className={styles.diaryProductListButton}
               onClick={handleDelete}
             >
-              X
+                ×
             </button>
           </li>
         ))}
