@@ -1,8 +1,8 @@
-import { combineReducers, createReducer } from '@reduxjs/toolkit';
+import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import {
   addEatenProductSuccess,
   getSearchProductSuccess,
-} from './productActions';
+} from "./productActions";
 
 export const getSearchProductReducer = createReducer([], {
   [getSearchProductSuccess]: (_, { payload }) => payload,

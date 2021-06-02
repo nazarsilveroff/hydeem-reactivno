@@ -1,4 +1,6 @@
+import { toast } from "react-toastify";
 import BaseHttpService from "../../services/api";
+import { getSearchProductError } from "../product/productActions";
 import { getInfoForDay } from "./dayActions";
 import { addProduct, deleteProduct } from "./dayActions";
 
@@ -9,7 +11,13 @@ export const getSummaryForDayOperation = () => async (dispatch, getState) => {
   try {
     const { data } = await baseUrl.getSummaryForDayData({ date: day });
     dispatch(getInfoForDay(data));
-  } catch (error) {}
+  } catch (error) {
+    dispatch(
+      getSearchProductError(
+        toast.error(`🧐 Вы не ввели свои данные`, { autoClose: 2000 })
+      )
+    );
+  }
 };
 
 export const addEatenProductOperation = (value) => async (dispatch) => {
