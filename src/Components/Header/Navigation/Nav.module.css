@@ -61,6 +61,13 @@ height: 44px;
 background-repeat: no-repeat;
 background-position: center;
 }
+.imageLinkAuth{
+background-image: url("../../../img/svg/logoTablet.svg");
+width: 166.41px;
+height: 63px;
+background-repeat: no-repeat;
+background-position: center;
+}
  @media screen and (min-width: 768px) {
       .imageLink{
           background-image: url("../../../img/svg/logoTablet.svg");
@@ -78,6 +85,11 @@ background-position: center;
           background-repeat: no-repeat;
           background-position: center;
       }
+      .navList{
+        margin-top: 45px;
+    border-left: 2px solid #E0E0E0;
+    padding: 10px 0 10px 22px;
+}
     }
 
-/* .navList{} */
+
