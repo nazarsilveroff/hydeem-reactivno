@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "../calendar/Calendar.module.css";
+import image from "../../../img/svg/calendar.svg"
 
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import { useDispatch } from "react-redux";
@@ -19,12 +20,15 @@ const Calendar = () => {
   }, [dispatch, startDate, selectDate]);
 
   return (
-        <DatePicker
-            className={styles.datePicker}
-            selected={startDate}
-            dateFormat="dd.MM.yyyy"
-            onChange={(date) => setStartDate(date)}
-        />
+        <div className={styles.flexCalendar}>
+          <DatePicker
+              className={styles.datePicker}
+              selected={startDate}
+              dateFormat="dd.MM.yyyy"
+              onChange={(date) => setStartDate(date)}
+          />
+            <img src={image} alt=""/>
+        </div>
   );
 };
 

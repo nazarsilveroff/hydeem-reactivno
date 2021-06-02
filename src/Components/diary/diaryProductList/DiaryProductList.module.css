@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: row;
     padding: 5px 0;
-    /* padding-right: 12px; */
+    padding-right: 12px;
     align-items: flex-end;
 }
 
@@ -69,6 +69,8 @@ color: #212121;
 }
 
 .diaryProductListButton {
+    width: 12px;
+    height: 35px;
     border: none;
     background-color: transparent;
     color: #9B9FAA;
@@ -102,7 +104,7 @@ color: #FFFFFF;
 @media screen and (min-width: 768px) {
     .diaryProductList {
         align-items: unset;
-        margin-top: 52px;
+        margin-top: 95px;
         height: 240px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -134,10 +136,6 @@ color: #FFFFFF;
         margin-right: 30px;
     }
 
-    .diaryProductListButton {
-        width: 12px;
-        height: 12px;
-    }
 
 
     .diaryButtonRounded {
@@ -149,7 +147,7 @@ color: #FFFFFF;
     .diaryProductList {
         width: 600px;
         align-items: unset;
-        margin-top: 60px;
+        margin-top: 100px;
         height: 240px;
         overflow-y: scroll;
         overflow-x: hidden;
@@ -158,7 +156,7 @@ color: #FFFFFF;
     .diaryProductListItem {
         /* justify-content: space-between; */
         align-items: center;
-        padding-right: 31px;
+        padding-right: 6px;
         margin-top: 7.5px;
         margin-bottom: 7.5;
     }

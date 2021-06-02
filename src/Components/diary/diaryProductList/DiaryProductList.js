@@ -32,8 +32,8 @@ const DiaryProductList = () => {
         {eatenProducts?.map((item) => (
           <li key={item.id} className={styles.diaryProductListItem}>
             <p className={styles.diaryProductListName}>{item.title}</p>
-            <p className={styles.diaryProductListWeight}>{Math.round(item.weight)}</p>
-            <p className={styles.diaryProductListCcal}>{Math.round(item.kcal)}</p>
+            <p className={styles.diaryProductListWeight}>{Math.round(item.weight)} г</p>
+            <p className={styles.diaryProductListCcal}>{Math.round(item.kcal)} ккал</p>
             <button
               id={item.id}
               className={styles.diaryProductListButton}
