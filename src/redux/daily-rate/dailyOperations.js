@@ -1,4 +1,5 @@
 import BaseHttpService from "../../services/api";
+import { getSummaryForDayOperation } from "../day/dayOperations";
 import { getDailyRate } from "./dailyActions";
 
 const baseHTTP = new BaseHttpService();
@@ -11,8 +12,8 @@ export const getDailyRateOperation =
     }
     try {
       const { data } = await baseHTTP.getDailyRate(values, userId);
-      console.log(data);
       dispatch(getDailyRate(data));
+      dispatch(getSummaryForDayOperation());
     } catch (error) {
       console.log(error);
     }

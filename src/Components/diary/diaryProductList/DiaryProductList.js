@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getInfoForDaySelector } from "../../../redux/day/daySelectors";
+import { getDayId, getEatenProducts } from "../../../redux/day/daySelectors";
 
 import { deleteProductOperation } from "../../../redux/day/dayOperations";
 
@@ -11,14 +11,13 @@ import styles from "../diaryProductList/DiaryProductList.module.css";
 const DiaryProductList = () => {
   let size = useWindowSize();
   const dispatch = useDispatch();
-  const { eatenProducts, id: currentDateId } = useSelector(
-    getInfoForDaySelector
-  );
+  const eatenProducts = useSelector(getEatenProducts);
+  const id = useSelector(getDayId);
 
   const handleDelete = (e) => {
     dispatch(
       deleteProductOperation({
-        dayId: currentDateId,
+        dayId: id,
         eatenProductId: e.target.id,
       })
     );
@@ -29,6 +28,7 @@ const DiaryProductList = () => {
   return (
     <>
       <ul className={styles.diaryProductList}>
+
           {eatenProducts?.length === 0 ? <span className={styles.emptyDiary}>Съеденные в этот день продукты ещё не добавлены</span> : eatenProducts?.map((item) => (
               <li key={item.id} className={styles.diaryProductListItem}>
                   <p className={styles.diaryProductListName}>{item.title}</p>
@@ -43,6 +43,7 @@ const DiaryProductList = () => {
                   </button>
               </li>
           ))}
+
       </ul>
       {size.width < 768 ? (
         <button
