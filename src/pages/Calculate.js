@@ -7,27 +7,28 @@ import cssStyles from "classnames";
 
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
+import { getSummaryForDayOperation } from "../redux/day/dayOperations";
 
 const initialState = {
   height: "",
   age: "",
   weight: "",
   desiredWeight: "",
-  bloodType: " "
+  bloodType: " ",
 };
 const Calculate = () => {
   const authorization = useSelector(authorizationSelector);
   const { toggle } = useModal();
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
-  const handleinputChange = e => {
+  const handleinputChange = (e) => {
     const { name, value } = e.target;
-    setState(prevState => ({
+    setState((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
-  const handleFormSubmit = e => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     dispatch(getDailyRateOperation(state));
     !authorization && toggle();
