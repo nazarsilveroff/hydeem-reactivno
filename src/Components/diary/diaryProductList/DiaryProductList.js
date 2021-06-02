@@ -1,10 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getDayId,
-  getEatenProducts,
-  getInfoForDaySelector,
-} from "../../../redux/day/daySelectors";
+import { getDayId, getEatenProducts } from "../../../redux/day/daySelectors";
 
 import { deleteProductOperation } from "../../../redux/day/dayOperations";
 
@@ -35,8 +31,12 @@ const DiaryProductList = () => {
         {eatenProducts?.map((item) => (
           <li key={item.id} className={styles.diaryProductListItem}>
             <p className={styles.diaryProductListName}>{item.title}</p>
-            <p className={styles.diaryProductListWeight}>{Math.round(item.weight)} г</p>
-            <p className={styles.diaryProductListCcal}>{Math.round(item.kcal)} ккал</p>
+            <p className={styles.diaryProductListWeight}>
+              {Math.round(item.weight)} г
+            </p>
+            <p className={styles.diaryProductListCcal}>
+              {Math.round(item.kcal)} ккал
+            </p>
             <button
               id={item.id}
               className={styles.diaryProductListButton}

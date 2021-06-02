@@ -51,9 +51,9 @@ width: 430px;
 }
 
 
-@media screen and (min-width: 1280px){
+/* @media screen and (min-width: 1280px){
  
-}
+} */
 .imageLink{
 background-image: url("../../../img/logo-mob.png");
 width: 46.67px;
@@ -85,11 +85,12 @@ background-position: center;
           background-repeat: no-repeat;
           background-position: center;
       }
-      .navList{
+
+    }
+ @media screen and (min-width: 1280px) {      
+    .navList{
         margin-top: 45px;
     border-left: 2px solid #E0E0E0;
     padding: 10px 0 10px 22px;
-}
-    }
-
+}}
 

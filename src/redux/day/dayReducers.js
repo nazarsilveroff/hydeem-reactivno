@@ -20,26 +20,20 @@ export const getSelectedDayReducer = createReducer(
 
 export const eatenProducts = createReducer([], {
   [addProduct]: (state, { payload }) => [...state, payload.eatenProduct],
-  [getInfoForDay]: (_, { payload }) => payload.eatenProducts || [],
+
   [deleteProduct]: (state, { payload }) =>
     state.filter((product) => product.id !== payload),
+  [getInfoForDay]: (_, { payload }) => payload.eatenProducts || [],
 });
 
 export const getInfoForDayReducer = createReducer([], {
   [getInfoForDay]: (_, { payload }) => payload,
-
   [addProduct]: (_, { payload }) => ({
     // ...state,
     // daySummary: payload.newSummary ? payload.newSummary : payload.daySummary,
     ...payload.newDay,
     ...payload,
   }),
-  // [deleteProduct]: (state, { payload }) => ({
-  //   ...state,
-  //   eatenProducts: state.eatenProducts.filter(
-  //     (product) => product.id !== payload
-  //   ),
-  // }),
 });
 
 export const daySummary = createReducer(

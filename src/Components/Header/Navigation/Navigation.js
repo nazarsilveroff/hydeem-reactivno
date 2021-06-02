@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import BurgerModal from "./BurgerModal/BurgerModal";
 import NavItems from "./NavItems/NavItems";
 import useWindowSize from "../../diary/diaryHook/UseDiary";
+import cls from "classnames";
 
 const Navigation = () => {
   const [toglBurger, setToglBurger] = useState(false);
@@ -24,7 +25,12 @@ const Navigation = () => {
         <div className={style.borderBotom}>
           <nav className={style.navContainer}>
             <div className={style.linkWrapper}>
-              <NavLink className={style.imageLinkAuth} to="/"></NavLink>
+              <NavLink
+                className={cls(
+                  size.width >= 768 ? style.imageLink : style.imageLinkAuth
+                )}
+                to="/"
+              ></NavLink>
               {size.width > 1280 && (
                 <ul className={style.navList}>
                   {mainRoutes.map((item) => (

@@ -7,7 +7,6 @@ import cssStyles from "classnames";
 
 import { getDailyRateOperation } from "../redux/daily-rate/dailyOperations";
 import styles from "./Calculate.module.css";
-import { getSummaryForDayOperation } from "../redux/day/dayOperations";
 
 const initialState = {
   height: "",

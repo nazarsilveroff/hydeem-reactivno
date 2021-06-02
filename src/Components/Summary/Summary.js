@@ -5,7 +5,6 @@ import { authorizationSelector } from "../../redux/auth/authSelectors";
 
 import {
   getDaySummarySelector,
-  getInfoForDaySelector,
   getSelectedDayString,
 } from "../../redux/day/daySelectors";
 import { userNotAllProd } from "../../redux/user/userSelectors";
@@ -13,7 +12,7 @@ import { userNotAllProd } from "../../redux/user/userSelectors";
 const Summary = () => {
   const authorization = useSelector(authorizationSelector);
   const selectedDay = useSelector(getSelectedDayString);
-  const defaultInfo = useSelector(getInfoForDaySelector);
+
   const daySummary = useSelector(getDaySummarySelector);
   const notAllProd = useSelector(userNotAllProd);
 
@@ -33,11 +32,13 @@ const Summary = () => {
             </ul>
             <ul className={style.list}>
               <li className={style.text}>
-                {defaultInfo?.kcalLeft || daySummary?.kcalLeft || 0}
+                {Math.round(daySummary?.kcalLeft) || 0}
               </li>
-              <li className={style.text}>{daySummary?.kcalConsumed || 0}</li>
               <li className={style.text}>
-                {defaultInfo?.dailyRate || daySummary?.dailyRate || 0}
+                {Math.round(daySummary?.kcalConsumed) || 0}
+              </li>
+              <li className={style.text}>
+                {Math.round(daySummary?.dailyRate) || 0}
               </li>
               <li className={style.text}>
                 {Math.round(daySummary?.percentsOfDailyRate) || 0}
@@ -51,7 +52,7 @@ const Summary = () => {
             <ul className={style.defaultText}>
               {notAllProd?.length > 0
                 ? notAllProd
-                    ?.slice(0, 3)
+                    ?.slice(0, 9)
                     .map((item) => <li key={item}>{item}</li>)
                 : "Здесь будет отображаться, что кушать запрещено!"}
             </ul>
