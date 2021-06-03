@@ -108,6 +108,9 @@ color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px) {
+    .emptyDiary{
+        font-size: 30px;
+    }
     .diaryProductList {
         align-items: unset;
         margin-top: 95px;
@@ -150,6 +153,9 @@ color: #FFFFFF;
 }
 
 @media screen and (min-width: 1280px) {
+    .emptyDiary{
+        font-size: 30px;
+    }
     .diaryProductList {
         width: 600px;
         align-items: unset;
