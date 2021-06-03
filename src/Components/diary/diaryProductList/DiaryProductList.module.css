@@ -27,7 +27,7 @@
 
 .diaryProductListName {
     width: 138px;
-    min-height: 26px;
+    min-height: 35px;
     border: none;
     border-bottom: 1px solid #e0e0e0;
     margin-right: 9px;
@@ -42,7 +42,7 @@
 
 .diaryProductListWeight {
     width: 50px;
-    height: 26px;
+    height: 35px;
     border: none;
     border-bottom: 1px solid #e0e0e0;
     margin-right: 10px;

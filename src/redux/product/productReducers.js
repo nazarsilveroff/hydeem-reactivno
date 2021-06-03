@@ -2,10 +2,12 @@ import { combineReducers, createReducer } from "@reduxjs/toolkit";
 import {
   addEatenProductSuccess,
   getSearchProductSuccess,
+  resetSearch,
 } from "./productActions";
 
 export const getSearchProductReducer = createReducer([], {
   [getSearchProductSuccess]: (_, { payload }) => payload,
+  [resetSearch]: () => [],
 });
 
 export const dayProductReducer = createReducer(

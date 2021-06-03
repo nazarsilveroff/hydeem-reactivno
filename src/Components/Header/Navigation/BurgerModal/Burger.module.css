@@ -14,9 +14,9 @@
     border: none;
     background-color: transparent;}
 
-.burgerModalWrapper{
-    position: absolute;
-    top: 70px;
+.burgerModalWrapperOpen{
+position: absolute;
+    top: 80px;
     right: 0px;
     bottom: 0px;
     z-index: 293;
@@ -30,6 +30,24 @@
     background-color: rgb(38, 64, 97);
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
     transform: translateX(0px);
+}
+.burgerModalWrapperClose{
+position: absolute;
+    top: 80px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 293;
+    display: block;
+    width: 1280px;
+    max-width: 100%;
+    margin-top: 0px;
+    padding-right: 0px;
+    -webkit-box-align: stretch;
+    align-items: stretch;
+    background-color: rgb(38, 64, 97);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    transform: translateX(-100%);
+
 }
 .burgerList{
 padding-top: 64px;
