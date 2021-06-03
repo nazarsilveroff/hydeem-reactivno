@@ -46,14 +46,15 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
-    /* display: flex; */
-    /* align-items: center; */
     text-align: center;
     letter-spacing: 0.04em;
     color: #FFFFFF;
-    /* margin: 60px auto; */
     margin: 0 auto;
     margin-top: 60px;
+}
+.diaryButtonModal:hover{
+    background-color: #FFFFFF;
+    color: #fc842d;
 }
 .productResultList{
     width: 295px;
