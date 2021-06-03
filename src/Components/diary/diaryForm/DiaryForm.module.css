@@ -55,6 +55,7 @@
 .diaryButtonModal:hover{
     background-color: #FFFFFF;
     color: #fc842d;
+    border: 2px solid #fc842d;
 }
 .productResultList{
     width: 295px;
