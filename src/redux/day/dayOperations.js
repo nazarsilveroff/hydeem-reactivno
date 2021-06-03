@@ -9,21 +9,27 @@ const baseUrl = new BaseHttpService();
 
 export const getSummaryForDayOperation = () => async (dispatch, getState) => {
   const day = getState().selectedDate.date;
+  // dispatch(setLoading());
   try {
     const { data } = await baseUrl.getSummaryForDayData({ date: day });
-    dispatch(setLoading());
+
     dispatch(getInfoForDay(data));
   } catch (error) {
-    dispatch(getSearchProductError(toast.error(`🧐 Вы не ввели свои данные`, { autoClose: 2000 })));
+    dispatch(
+      getSearchProductError(
+        toast.error(`🧐 Вы не ввели свои данные`, { autoClose: 2000 })
+      )
+    );
   } finally {
-    dispatch(setLoading());
+    // dispatch(setLoading());
   }
 };
 
-export const addEatenProductOperation = value => async dispatch => {
+export const addEatenProductOperation = (value) => async (dispatch) => {
+  dispatch(setLoading());
   try {
     const { data } = await baseUrl.addEatenProduct(value);
-    dispatch(setLoading());
+
     dispatch(addProduct(data));
     dispatch(resetSearch());
   } catch (error) {
@@ -33,14 +39,17 @@ export const addEatenProductOperation = value => async dispatch => {
   }
 };
 
-export const deleteProductOperation = ({ eatenProductId, dayId }) => async dispatch => {
-  try {
-    await baseUrl.delleteEatenProduct({ eatenProductId, dayId });
+export const deleteProductOperation =
+  ({ eatenProductId, dayId }) =>
+  async (dispatch) => {
     dispatch(setLoading());
-    dispatch(deleteProduct(eatenProductId));
-    dispatch(getSummaryForDayOperation());
-  } catch (error) {
-  } finally {
-    dispatch(setLoading());
-  }
-};
+    try {
+      await baseUrl.delleteEatenProduct({ eatenProductId, dayId });
+
+      dispatch(deleteProduct(eatenProductId));
+      dispatch(getSummaryForDayOperation());
+    } catch (error) {
+    } finally {
+      dispatch(setLoading());
+    }
+  };

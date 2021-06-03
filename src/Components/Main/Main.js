@@ -12,7 +12,9 @@ import style from "./Main.module.css";
 import Loader from "../loader/Loader";
 
 const Main = () => {
-  const authToken = useSelector(state => state.authorization.tokens.accessToken);
+  const authToken = useSelector(
+    (state) => state.authorization.tokens.accessToken
+  );
   const size = useWindowSize();
   return (
     <>
@@ -21,7 +23,7 @@ const Main = () => {
       <main className={style.container}>
         <Suspense fallback={<Loader />}>
           <Switch>
-            {mainRoutes.map(item =>
+            {mainRoutes.map((item) =>
               item.private ? (
                 <PrivateRoutes {...item} key={item.path} auth={authToken} />
               ) : (

@@ -4,10 +4,10 @@ import { getDailyRate } from "./dailyActions";
 export const getDailyRateReducer = createReducer(
   {},
   {
-    [getDailyRate]: (_, { payload }) => payload
+    [getDailyRate]: (_, { payload }) => payload,
   }
 );
 
 export const loaderReducer = createReducer(false, {
-  [getDailyRate]: state => !state
+  [getDailyRate]: (state) => !state,
 });

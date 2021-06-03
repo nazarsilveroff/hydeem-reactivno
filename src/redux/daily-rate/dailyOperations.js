@@ -2,6 +2,7 @@ import BaseHttpService from "../../services/api";
 import { getSummaryForDayOperation } from "../day/dayOperations";
 import { getDailyRate } from "./dailyActions";
 import { setLoading } from "../loading/loaderAction";
+import { toast } from "react-toastify";
 
 const baseHTTP = new BaseHttpService();
 
@@ -21,10 +22,8 @@ export const getDailyRateOperation =
         dispatch(getSummaryForDayOperation());
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.response.data.message);
+    } finally {
+      dispatch(setLoading());
     }
-    finally {
-    dispatch(setLoading());
-  }
   };
-
