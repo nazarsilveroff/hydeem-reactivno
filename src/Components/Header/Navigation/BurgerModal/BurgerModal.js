@@ -14,30 +14,35 @@ const BurgerModal = ({ toglBurger, hendleToglBurger, authToken }) => {
         type="button"
         onClick={hendleToglBurger}
       ></button>
-      {toglBurger && (
-        <div className={style.burgerModalWrapper}>
-          <ul className={style.burgerList}>
-            {mainRoutes.map((item) => (
-              <li key={item.path} className={style.navItem}>
-                {authToken && !item.restricted && (
-                  <NavLink
-                    onClick={hendleToglBurger}
-                    to={{
-                      pathname: item.path,
-                      state: { from: location.pathname },
-                    }}
-                    className={style.navItemLink}
-                    activeClassName={style.activ}
-                    exact={item.exact}
-                  >
-                    {item.name}
-                  </NavLink>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+
+      <div
+        className={cls(
+          toglBurger
+            ? style.burgerModalWrapperOpen
+            : style.burgerModalWrapperClose
+        )}
+      >
+        <ul className={style.burgerList}>
+          {mainRoutes.map((item) => (
+            <li key={item.path} className={style.navItem}>
+              {authToken && !item.restricted && (
+                <NavLink
+                  onClick={hendleToglBurger}
+                  to={{
+                    pathname: item.path,
+                    state: { from: location.pathname },
+                  }}
+                  className={style.navItemLink}
+                  activeClassName={style.activ}
+                  exact={item.exact}
+                >
+                  {item.name}
+                </NavLink>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };

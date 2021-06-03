@@ -31,6 +31,7 @@ const DiaryForm = () => {
         weight: state.weight,
       })
     );
+
     document.querySelector("input[name=search]").value = "";
   };
 

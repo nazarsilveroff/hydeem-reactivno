@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import BaseHttpService from "../../services/api";
-import { getSearchProductError } from "../product/productActions";
+import { getSearchProductError, resetSearch } from "../product/productActions";
 import { getInfoForDay } from "./dayActions";
 import { addProduct, deleteProduct } from "./dayActions";
 import { setLoading } from "../loading/loaderAction";
@@ -25,6 +25,7 @@ export const addEatenProductOperation = value => async dispatch => {
     const { data } = await baseUrl.addEatenProduct(value);
     dispatch(setLoading());
     dispatch(addProduct(data));
+    dispatch(resetSearch());
   } catch (error) {
     console.log(`error`, error);
   } finally {

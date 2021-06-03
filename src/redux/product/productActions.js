@@ -7,3 +7,5 @@ export const addEatenProductSuccess = createAction("addEatenProductSuccess");
 export const deleteProductSuccess = createAction("deleteProductSuccess");
 
 export const getSearchProductError = createAction("getSearchProductError");
+
+export const resetSearch = createAction("resetSearch");
