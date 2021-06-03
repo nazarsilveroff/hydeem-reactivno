@@ -1,8 +1,7 @@
 .emptyDiary{
     font-family: Verdana;
-    text-shadow: 12px 9px 20px black;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 21px;
 }
 .diaryProductList {
     height: 210px;
@@ -108,6 +107,9 @@ color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px) {
+    .emptyDiary{
+        font-size: 30px;
+    }
     .diaryProductList {
         align-items: unset;
         margin-top: 95px;
@@ -150,6 +152,9 @@ color: #FFFFFF;
 }
 
 @media screen and (min-width: 1280px) {
+    .emptyDiary{
+        font-size: 30px;
+    }
     .diaryProductList {
         width: 600px;
         align-items: unset;
