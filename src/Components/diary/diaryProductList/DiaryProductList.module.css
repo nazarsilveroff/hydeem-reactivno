@@ -1,8 +1,8 @@
 .emptyDiary{
     font-family: Verdana;
-    text-shadow: 12px 9px 20px black;
+    /* text-shadow: 12px 9px 20px black; */
     font-weight: bold;
-    font-size: 30px;
+    font-size: 22px;
 }
 .diaryProductList {
     height: 210px;

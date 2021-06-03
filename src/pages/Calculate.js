@@ -58,6 +58,7 @@ const Calculate = () => {
                     onChange={handleinputChange}
                     min="100"
                     max="260"
+                    required
                   />
                   <p className={styles.labelValue}>Рост*</p>
                 </label>
@@ -71,6 +72,7 @@ const Calculate = () => {
                     value={state.age}
                     min="12"
                     max="100"
+                    required
                   />
                   <p className={styles.labelValue}>Возраст*</p>
                 </label>
@@ -84,6 +86,7 @@ const Calculate = () => {
                     value={state.weight}
                     min="40"
                     max="150"
+                    required
                   />
                   <p className={styles.labelValue}>Текущий вес*</p>
                 </label>
@@ -99,6 +102,7 @@ const Calculate = () => {
                     value={state.desiredWeight}
                     min="40"
                     max="150"
+                    required
                   />
                   <p className={styles.labelValue}>Желаемый вес*</p>
                 </label>
@@ -112,6 +116,7 @@ const Calculate = () => {
                       value="1"
                       onChange={handleinputChange}
                       checked={state.bloodType === "1"}
+                      required
                     />
                     <label htmlFor="first" className={styles.radioLabel}>
                       1
@@ -123,6 +128,7 @@ const Calculate = () => {
                       value="2"
                       onChange={handleinputChange}
                       checked={state.bloodType === "2"}
+                      required
                     />
                     <label htmlFor="second" className={styles.radioLabel}>
                       2
@@ -134,6 +140,7 @@ const Calculate = () => {
                       value="3"
                       onChange={handleinputChange}
                       checked={state.bloodType === "3"}
+                      required
                     />
                     <label htmlFor="third" className={styles.radioLabel}>
                       3
@@ -145,6 +152,7 @@ const Calculate = () => {
                       value="4"
                       onChange={handleinputChange}
                       checked={state.bloodType === "4"}
+                      required
                     />
                     <label htmlFor="fourth" className={styles.radioLabel}>
                       4

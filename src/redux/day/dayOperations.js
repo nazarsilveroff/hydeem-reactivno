@@ -23,7 +23,6 @@ export const getSummaryForDayOperation = () => async (dispatch, getState) => {
 export const addEatenProductOperation = (value) => async (dispatch) => {
   try {
     const { data } = await baseUrl.addEatenProduct(value);
-    console.log(data);
     dispatch(addProduct(data));
   } catch (error) {
     console.log(`error`, error);

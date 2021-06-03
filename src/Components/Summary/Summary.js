@@ -41,7 +41,7 @@ const Summary = () => {
                 {Math.round(daySummary?.dailyRate) || 0}
               </li>
               <li className={style.text}>
-                {Math.round(daySummary?.percentsOfDailyRate) || 0}
+                {Math.round(daySummary?.percentsOfDailyRate) || 0}%
               </li>
             </ul>
           </div>

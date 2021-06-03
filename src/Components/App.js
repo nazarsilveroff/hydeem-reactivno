@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer autoClose={2000} />
       <Header />
       <Main />
       <Modal />

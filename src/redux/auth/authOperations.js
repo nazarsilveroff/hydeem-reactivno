@@ -18,7 +18,7 @@ export const registerOperations = (user) => async (dispatch) => {
     toast.success(`Вы зарегистрировались`);
     dispatch(loginOperations({ email: user.email, password: user.password }));
   } catch (error) {
-    // console.log("error:> ", error.response.data.message);
+    // console.log("error:> ", error.response.data);
     dispatch(registerError(error.response.data.message));
     toast.error(error.response.data.message);
   } finally {
