@@ -1,8 +1,10 @@
 import BaseHttpService from "../../services/api";
 import { getSummaryForDayOperation } from "../day/dayOperations";
 import { getDailyRate } from "./dailyActions";
+import { setLoading } from "../loading/loaderAction";
 
 const baseHTTP = new BaseHttpService();
+
 export const getDailyRateOperation =
   (userCharacteristics) => async (dispatch, getState) => {
     const accessToken = getState().authorization.tokens.accessToken;
@@ -11,6 +13,7 @@ export const getDailyRateOperation =
     for (const char of Object.keys(userCharacteristics)) {
       values[char] = Number(userCharacteristics[char]);
     }
+    dispatch(setLoading());
     try {
       const { data } = await baseHTTP.getDailyRate(values, userId);
       dispatch(getDailyRate(data));
@@ -20,4 +23,8 @@ export const getDailyRateOperation =
     } catch (error) {
       console.log(error);
     }
+    finally {
+    dispatch(setLoading());
+  }
   };
+

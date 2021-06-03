@@ -8,68 +8,62 @@ import BurgerModal from "./BurgerModal/BurgerModal";
 import NavItems from "./NavItems/NavItems";
 import useWindowSize from "../../diary/diaryHook/UseDiary";
 import cls from "classnames";
+import Loader from "../../loader/Loader";
+import { getLoader } from "../../../redux/loading/loaderSelectors";
 
 const Navigation = () => {
   const [toglBurger, setToglBurger] = useState(false);
   const hendleToglBurger = () => {
     setToglBurger(!toglBurger);
   };
-  const authToken = useSelector(
-    (state) => state.authorization.tokens.accessToken
-  );
+  const authToken = useSelector(state => state.authorization.tokens.accessToken);
   const size = useWindowSize();
+  const loading = useSelector(getLoader);
 
   return (
     <>
-      {authToken && (
-        <div className={style.borderBotom}>
-          <nav className={style.navContainer}>
-            <div className={style.linkWrapper}>
-              <NavLink
-                className={cls(
-                  size.width >= 768 ? style.imageLink : style.imageLinkAuth
-                )}
-                to="/"
-              ></NavLink>
-              {size.width > 1280 && (
-                <ul className={style.navList}>
-                  {mainRoutes.map((item) => (
-                    <NavItems
-                      item={item}
-                      key={item.path}
-                      authToken={authToken}
-                    />
-                  ))}
-                </ul>
-              )}
-              {size.width < 1280 && (
-                <>
-                  {size.width >= 768 && size.width <= 1280 ? <UserBar /> : null}
+      {!loading ? (
+        <>
+          {authToken && (
+            <div className={style.borderBotom}>
+              <nav className={style.navContainer}>
+                <div className={style.linkWrapper}>
+                  <NavLink className={cls(size.width >= 768 ? style.imageLink : style.imageLinkAuth)} to="/" />
+                  {size.width > 1280 && (
+                    <ul className={style.navList}>
+                      {mainRoutes.map(item => (
+                        <NavItems item={item} key={item.path} authToken={authToken} />
+                      ))}
+                    </ul>
+                  )}
+                  {size.width < 1280 && (
+                    <>
+                      {size.width >= 768 && size.width <= 1280 ? <UserBar /> : null}
 
-                  <BurgerModal
-                    hendleToglBurger={hendleToglBurger}
-                    toglBurger={toglBurger}
-                    authToken={authToken}
-                  />
-                </>
-              )}
+                      <BurgerModal hendleToglBurger={hendleToglBurger} toglBurger={toglBurger} authToken={authToken} />
+                    </>
+                  )}
+                </div>
+              </nav>
             </div>
-          </nav>
-        </div>
-      )}
-      {!authToken && (
-        <div className={style.borderBotom}>
-          <nav className={style.navContainer}>
-            <div className={style.linkWrapper}>
-              <NavLink className={style.imageLink} to="/"></NavLink>
-              <ul className={style.navList}>
-                {mainRoutes.map((item) => (
-                  <NavItems item={item} key={item.path} authToken={authToken} />
-                ))}
-              </ul>
+          )}
+          {!authToken && (
+            <div className={style.borderBotom}>
+              <nav className={style.navContainer}>
+                <div className={style.linkWrapper}>
+                  <NavLink className={style.imageLink} to="/" />
+                  <ul className={style.navList}>
+                    {mainRoutes.map(item => (
+                      <NavItems item={item} key={item.path} authToken={authToken} />
+                    ))}
+                  </ul>
+                </div>
+              </nav>
             </div>
-          </nav>
-        </div>
+          )}
+        </>
+      ) : (
+        <Loader />
       )}
     </>
   );

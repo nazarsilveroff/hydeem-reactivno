@@ -4,13 +4,13 @@ import { resetError, setError } from "../error/erorAction";
 import { setUserLoading, getUserData } from "./userActions";
 
 export const daysInfoReducer = createReducer([], {
-  [getUserData]: (_, { payload }) => payload.days,
+  [getUserData]: (_, { payload }) => payload.days
 });
 
 export const userDataReducer = createReducer(
   {},
   {
-    [getUserData]: (_, { payload }) => payload.userData,
+    [getUserData]: (_, { payload }) => payload.userData
   }
 );
 
@@ -21,23 +21,28 @@ export const userReducer = createReducer(
     [getUserData]: (_, { payload }) => ({
       email: payload.email,
       username: payload.username,
-      id: payload.id,
+      id: payload.id
     }),
-    [logOut]: () => ({}),
+    [logOut]: () => ({})
   }
 );
 
 export const userLoaderReducer = createReducer(false, {
-  [setUserLoading]: (state) => !state,
+  [setUserLoading]: state => !state,
+  [getUserData]: state => !state,
+  [loginSuccess]: state => !state,
+  [setError]: state => !state,
+  [resetError]: state => !state,
+  [logOut]: () => false
 });
 export const userErorrReducer = createReducer("", {
   [setError]: (_, { payload }) => payload,
-  [resetError]: () => "",
+  [resetError]: () => ""
 });
 export const userReducers = combineReducers({
   userInfo: userReducer,
   userData: userDataReducer,
   daysInfo: daysInfoReducer,
   loader: userLoaderReducer,
-  erorr: userErorrReducer,
+  erorr: userErorrReducer
 });

@@ -1,1 +1,1 @@
-export const getLoader = (state) => state.contacts.loader;
+export const getLoader = state => state.loader;
