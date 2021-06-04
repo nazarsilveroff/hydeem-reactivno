@@ -7,7 +7,7 @@ import { deleteProductOperation } from "../../../redux/day/dayOperations";
 import useModal from "../../Modal/ModalHook/useModal";
 import useWindowSize from "../diaryHook/UseDiary";
 import styles from "../diaryProductList/DiaryProductList.module.css";
-import LoaderProducts from "../../loader/LoaderProducts/LoaderProducts";
+// import LoaderProducts from "../../loader/LoaderProducts/LoaderProducts";
 // import { getLoader } from "../../../redux/loading/loaderSelectors";
 
 const DiaryProductList = () => {

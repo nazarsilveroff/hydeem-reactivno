@@ -8,14 +8,16 @@ import {
   getInfoForDaySelector,
   getSelectedDayString,
 } from "../../redux/day/daySelectors";
-import { userNotAllProd } from "../../redux/user/userSelectors";
+// import { userNotAllProd } from "../../redux/user/userSelectors";
+import { getAllProdSelector } from "../../redux/daily-rate/dailySelectors";
 
 const Summary = () => {
   const authorization = useSelector(authorizationSelector);
   const selectedDay = useSelector(getSelectedDayString);
   const defaultData = useSelector(getInfoForDaySelector);
   const daySummary = useSelector(getDaySummarySelector);
-  const notAllProd = useSelector(userNotAllProd);
+  // const notAllProd = useSelector(userNotAllProd);
+  const defaultNotAllProd = useSelector(getAllProdSelector);
 
   return authorization ? (
     <>
@@ -34,13 +36,17 @@ const Summary = () => {
             <ul className={style.list}>
               <li className={style.text}>
                 {Math.round(defaultData?.kcalLeft || daySummary?.kcalLeft) || 0}
+                <span> ккал</span>
               </li>
+
               <li className={style.text}>
                 {Math.round(daySummary?.kcalConsumed) || 0}
+                <span> ккал</span>
               </li>
               <li className={style.text}>
                 {Math.round(defaultData?.dailyRate || daySummary?.dailyRate) ||
                   0}
+                <span> ккал</span>
               </li>
               <li className={style.text}>
                 {Math.round(daySummary?.percentsOfDailyRate) || 0}%
@@ -52,11 +58,14 @@ const Summary = () => {
           <h2 className={style.title}>Нерекомендуемые продукты</h2>
           <div className={style.products}>
             <ul className={style.defaultText}>
-              {notAllProd?.length > 0
-                ? notAllProd
+              {defaultNotAllProd?.length > 0
+                ? defaultNotAllProd
                     ?.slice(0, 9)
                     .map((item) => <li key={item}>{item}</li>)
-                : "Здесь будет отображаться, что кушать запрещено!"}
+                : // notAllProd
+                  //   ?.slice(0, 9)
+                  //   .map((item) => <li key={item}>{item}</li>)
+                  "Здесь будет отображаться, что кушац запрещено!"}
             </ul>
           </div>
         </div>

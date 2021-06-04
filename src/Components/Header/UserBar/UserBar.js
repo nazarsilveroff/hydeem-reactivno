@@ -26,7 +26,7 @@ const UserBar = () => {
             size.width >= 1280 && style.userBox3
           )}
         >
-          {isOpen && <ModalBtn />}
+          {size.width <= 425 && isOpen && <ModalBtn />}
           <div className={style.userInfo}>
             <span className={style.name}>{username}</span>
           </div>
@@ -40,14 +40,8 @@ const UserBar = () => {
         </div>
       ) : null}
 
-      {!authorization && isOpen && (
-        <div
-          className={classNames(
-            style.userBox1
-            //     size.width > 768 && style.userBox2,
-            //     size.width > 1280 && style.userBox3
-          )}
-        >
+      {size.width <= 768 && !authorization && isOpen && (
+        <div className={classNames(style.userBox1)}>
           <ModalBtn />
         </div>
       )}
